@@ -1,0 +1,47 @@
+@startuml
+participant Frontend as frontend
+participant "Transfer Service" as transaction
+queue "Event Broker" as broker
+participant "Fraud Service" as fraud
+participant "Paypal Service" as provider1
+participant "Wise Service" as provider2
+
+frontend -> transaction: initiateTransfer()
+transaction --> frontend: transferId
+transaction -> broker: RequestFraudCheckEvent
+
+fraud -> broker: getEvents()
+broker --> fraud: RequestFraudCheckEvent
+fraud -> fraud: expensive fraud check
+fraud --> broker: FraudCheckedEvent
+transaction -> broker: getEvents()
+broker --> transaction: FraudCheckedEvent
+
+frontend -> transaction: getTransferStatus()
+transaction --> frontend: FRAUD_CHECKED
+
+
+transaction -> broker: RequestDebitEvent
+provider1 -> broker: getEvents()
+broker --> provider1: RequestDebitEvent
+provider1 -> provider1: debit()
+provider1 -> broker: AccountDebitedEvent
+transaction -> broker: getEvents()
+broker --> transaction: AccountDebitedEvent
+
+frontend -> transaction: getTransferStatus()
+transaction --> frontend: PROCESSING
+
+transaction -> broker: RequestCreditEvent
+provider2 -> broker: getEvents()
+broker --> provider2: RequestCreditEvent
+provider2 -> provider2: credit()
+provider2 -> broker: AccountCreditedEvent
+transaction -> broker: getEvents()
+broker --> transaction: AccountCreditedEvent
+
+
+frontend -> transaction: getTransferStatus()
+transaction --> frontend: COMPLETE \n(or FAILED with reason)
+
+@enduml
