@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 @SpringBootApplication
 // Allow all other Kalix services deployed in the same project to access the components of this
@@ -12,6 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 // per component or method using annotations.
 // Documentation at https://docs.kalix.io/services/using-acls.html
 @Acl(allow = @Acl.Matcher(service = "*"))
+@EnableAsync
 public class TransferApplication {
 
     private static final Logger logger = LoggerFactory.getLogger(TransferApplication.class);

@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>3.1.0</version>
+    <version>3.1.5</version>
     <relativePath/> 
   </parent>
   <groupId>io.reflectoring</groupId>
@@ -24,7 +24,7 @@
     <jdk.target>17</jdk.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-    <kalix-sdk.version>1.3.3</kalix-sdk.version>
+    <kalix-sdk.version>1.3.4</kalix-sdk.version>
   </properties>
 
   <build>
@@ -253,6 +253,22 @@
       <artifactId>kalix-spring-boot-starter-test</artifactId>
       <version>${kalix-sdk.version}</version>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-jdbc</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.flywaydb</groupId>
+      <artifactId>flyway-core</artifactId>
     </dependency>
 
     <dependency>

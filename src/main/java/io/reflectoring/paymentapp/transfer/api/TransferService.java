@@ -1,5 +1,9 @@
 package io.reflectoring.paymentapp.transfer.api;
 
+import io.reflectoring.paymentapp.transfer.internal.incoming.api.AccountCreditedEvent;
+import io.reflectoring.paymentapp.transfer.internal.incoming.api.AccountDebitedEvent;
+import io.reflectoring.paymentapp.transfer.internal.incoming.api.FraudCheckedEvent;
+
 import java.util.Optional;
 
 public interface TransferService {
@@ -15,9 +19,20 @@ public interface TransferService {
     void updateTransfer(Transfer transfer);
 
     /**
-     * Starts or continues a transfer workflow. If the transfer has been started before, the processing
+     * Continues a transfer workflow. If the transfer has been started before, the processing
      * will pick up at the state it was left in. The workflow is idempotent, so this method can
      * be called multiple times.
      */
-    void processTransfer(Transfer transfer);
+    void continueTransfer(Transfer transfer);
+
+    /**
+     * Creates a new Transfer entity and starts the transfer.
+     */
+    TransferId startNewTransfer(StartTransferRequest startTransferRequest);
+
+    void onFraudChecked(FraudCheckedEvent event);
+
+    void onSourceAccountDebited(AccountDebitedEvent event);
+
+    void onTargetAccountCredited(AccountCreditedEvent event);
 }

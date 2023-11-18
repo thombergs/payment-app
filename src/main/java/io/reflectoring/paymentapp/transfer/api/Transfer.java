@@ -16,7 +16,6 @@ public class Transfer {
 
     private final OutgoingEvents outgoingEvents;
 
-
     public enum TransferStatus {
         NOT_STARTED(TransferWorkflowAction.FRAUD_CHECK),
         WAITING_FOR_FRAUD_CHECK(TransferWorkflowAction.FRAUD_CHECK),
@@ -163,6 +162,11 @@ public class Transfer {
             throw new IllegalStateException(String.format("event was targeted at different transfer (expected transfer ID: %s; actual transfer ID: %s)!", this.id, event.transferId()));
         }
 
+        if (this.getStatus() != TransferStatus.WAITING_FOR_FRAUD_CHECK) {
+            // idempotency: in case of duplicate event, we don't want to do anything
+            return;
+        }
+
         if (event.result() == FraudCheckedEvent.FraudCheckResult.FAILED) {
             this.fail("Fraud check failed");
             return;
@@ -180,6 +184,11 @@ public class Transfer {
             throw new IllegalStateException(String.format("event was targeted at different transfer (expected transfer ID: %s; actual transfer ID: %s)!", this.id, event.transferId()));
         }
 
+        if (this.getStatus() != TransferStatus.WAITING_FOR_DEBIT) {
+            // idempotency: in case of duplicate event, we don't want to do anything
+            return;
+        }
+
         if (event.result() == AccountDebitedEvent.DebitResult.FAILED) {
             this.fail("Debiting source account failed");
             return;
@@ -195,6 +204,11 @@ public class Transfer {
     public void onTargetAccountCredited(AccountCreditedEvent event) {
         if (!event.transferId().equals(this.id)) {
             throw new IllegalStateException(String.format("event was targeted at different transfer (expected transfer ID: %s; actual transfer ID: %s)!", this.id, event.transferId()));
+        }
+
+        if (this.getStatus() != TransferStatus.WAITING_FOR_CREDIT) {
+            // idempotency: in case of duplicate event, we don't want to do anything
+            return;
         }
 
         if (event.result() == AccountCreditedEvent.CreditResult.FAILED) {
