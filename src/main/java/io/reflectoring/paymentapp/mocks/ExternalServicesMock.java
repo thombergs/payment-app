@@ -13,10 +13,9 @@ import org.springframework.stereotype.Component;
 import java.util.Random;
 
 @Component
-public class FraudServiceMock {
+public class ExternalServicesMock {
 
     private final ApplicationEventPublisher publisher;
-    private final Random random = new Random();
 
     @EventListener(RequestFraudCheckEvent.class)
     public void onRequestFraudCheck(RequestFraudCheckEvent event) throws InterruptedException {
@@ -24,7 +23,7 @@ public class FraudServiceMock {
         publisher.publishEvent(new FraudCheckedEvent(event.transferId(), FraudCheckedEvent.FraudCheckResult.SUCCESS));
     }
 
-    public FraudServiceMock(ApplicationEventPublisher publisher) {
+    public ExternalServicesMock(ApplicationEventPublisher publisher) {
         this.publisher = publisher;
     }
 
