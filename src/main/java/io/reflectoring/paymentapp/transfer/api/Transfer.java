@@ -9,6 +9,8 @@ import io.reflectoring.paymentapp.transfer.internal.outgoing.api.RequestAccountD
 import io.reflectoring.paymentapp.transfer.internal.outgoing.api.RequestFraudCheckEvent;
 
 import java.util.Locale;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 import static java.util.Objects.requireNonNull;
 
@@ -157,7 +159,7 @@ public class Transfer {
         }
     }
 
-    public void onFraudChecked(FraudCheckedEvent event, boolean continueTransfer) {
+    public synchronized void onFraudChecked(FraudCheckedEvent event, boolean continueTransfer) {
         if (!event.transferId().equals(this.id)) {
             throw new IllegalStateException(String.format("event was targeted at different transfer (expected transfer ID: %s; actual transfer ID: %s)!", this.id, event.transferId()));
         }
@@ -179,7 +181,7 @@ public class Transfer {
         }
     }
 
-    public void onSourceAccountDebited(AccountDebitedEvent event, boolean continueTransfer) {
+    public synchronized void onSourceAccountDebited(AccountDebitedEvent event, boolean continueTransfer) {
         if (!event.transferId().equals(this.id)) {
             throw new IllegalStateException(String.format("event was targeted at different transfer (expected transfer ID: %s; actual transfer ID: %s)!", this.id, event.transferId()));
         }
@@ -201,7 +203,7 @@ public class Transfer {
         }
     }
 
-    public void onTargetAccountCredited(AccountCreditedEvent event) {
+    public synchronized void onTargetAccountCredited(AccountCreditedEvent event) {
         if (!event.transferId().equals(this.id)) {
             throw new IllegalStateException(String.format("event was targeted at different transfer (expected transfer ID: %s; actual transfer ID: %s)!", this.id, event.transferId()));
         }
