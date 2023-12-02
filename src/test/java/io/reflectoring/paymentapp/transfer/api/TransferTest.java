@@ -35,24 +35,24 @@ class TransferTest {
         );
 
         assertThat(transfer.workflowStatus())
-                .isEqualTo(Transfer.WorkflowStatus.NOT_STARTED);
+                .isEqualTo(WorkflowStatus.NOT_STARTED);
 
         transfer.startTransfer();
         verify(outgoingEvents).requestFraudCheck(any());
         assertThat(transfer.workflowStatus())
-                .isEqualTo(Transfer.WorkflowStatus.WAITING_FOR_FRAUD_CHECK);
+                .isEqualTo(WorkflowStatus.WAITING_FOR_FRAUD_CHECK);
 
         transfer.onFraudChecked(
                 new FraudCheckedEvent(
                         transfer.id(), FraudCheckedEvent.FraudCheckResult.SUCCESS),
                 false);
         assertThat(transfer.workflowStatus())
-                .isEqualTo(Transfer.WorkflowStatus.FRAUD_CHECKED);
+                .isEqualTo(WorkflowStatus.FRAUD_CHECKED);
 
         transfer.continueTransfer();
         verify(outgoingEvents).requestAccountDebit(any());
         assertThat(transfer.workflowStatus())
-                .isEqualTo(Transfer.WorkflowStatus.WAITING_FOR_DEBIT);
+                .isEqualTo(WorkflowStatus.WAITING_FOR_DEBIT);
 
         transfer.onSourceAccountDebited(
                 new AccountDebitedEvent(
@@ -63,12 +63,12 @@ class TransferTest {
                 false
         );
         assertThat(transfer.workflowStatus())
-                .isEqualTo(Transfer.WorkflowStatus.SOURCE_ACCOUNT_DEBITED);
+                .isEqualTo(WorkflowStatus.SOURCE_ACCOUNT_DEBITED);
 
         transfer.continueTransfer();
         verify(outgoingEvents).requestAccountCredit(any());
         assertThat(transfer.workflowStatus())
-                .isEqualTo(Transfer.WorkflowStatus.WAITING_FOR_CREDIT);
+                .isEqualTo(WorkflowStatus.WAITING_FOR_CREDIT);
 
         transfer.onTargetAccountCredited(
                 new AccountCreditedEvent(
@@ -78,7 +78,7 @@ class TransferTest {
                         AccountCreditedEvent.CreditResult.SUCCESS)
         );
         assertThat(transfer.workflowStatus())
-                .isEqualTo(Transfer.WorkflowStatus.COMPLETE);
+                .isEqualTo(WorkflowStatus.COMPLETE);
     }
 
 }

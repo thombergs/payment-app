@@ -5,10 +5,9 @@ import io.reflectoring.paymentapp.transfer.api.Currency;
 import io.reflectoring.paymentapp.transfer.api.Money;
 import io.reflectoring.paymentapp.transfer.api.SimpleTransferState;
 import io.reflectoring.paymentapp.transfer.api.StartTransferRequest;
-import io.reflectoring.paymentapp.transfer.api.Transfer;
 import io.reflectoring.paymentapp.transfer.api.TransferId;
-import io.reflectoring.paymentapp.transfer.api.TransferService;
 import io.reflectoring.paymentapp.transfer.api.TransferState;
+import io.reflectoring.paymentapp.transfer.api.WorkflowStatus;
 import io.reflectoring.paymentapp.transfer.internal.incoming.api.AccountCreditedEvent;
 import io.reflectoring.paymentapp.transfer.internal.incoming.api.AccountDebitedEvent;
 import io.reflectoring.paymentapp.transfer.internal.incoming.api.FraudCheckedEvent;
@@ -31,14 +30,11 @@ import java.util.Locale;
 @RequestMapping("/transfer/{id}")
 public class TransferWorkflow extends Workflow<TransferState> {
 
-    private final TransferService transferService;
     private final ComponentClient componentClient;
 
     public TransferWorkflow(
-            TransferService transferService,
             ComponentClient componentClient
     ) {
-        this.transferService = transferService;
         this.componentClient = componentClient;
     }
 
@@ -57,7 +53,7 @@ public class TransferWorkflow extends Workflow<TransferState> {
 
         TransferState initialState = new SimpleTransferState(
                 new TransferId(id),
-                Transfer.WorkflowStatus.NOT_STARTED,
+                WorkflowStatus.NOT_STARTED,
                 null,
                 new AccountId(request.sourceAccountId()),
                 new AccountId(request.targetAccountId()),
@@ -77,7 +73,7 @@ public class TransferWorkflow extends Workflow<TransferState> {
             return effects().error("transfer not started");
         }
 
-        if (currentState().workflowStatus() != Transfer.WorkflowStatus.WAITING_FOR_FRAUD_CHECK) {
+        if (currentState().workflowStatus() != WorkflowStatus.WAITING_FOR_FRAUD_CHECK) {
             return effects().error("transfer is not in the right state");
         }
 
@@ -92,7 +88,7 @@ public class TransferWorkflow extends Workflow<TransferState> {
             return effects().error("transfer not started");
         }
 
-        if (currentState().workflowStatus() != Transfer.WorkflowStatus.WAITING_FOR_DEBIT) {
+        if (currentState().workflowStatus() != WorkflowStatus.WAITING_FOR_DEBIT) {
             return effects().error("transfer is not in the right state");
         }
 
@@ -107,7 +103,7 @@ public class TransferWorkflow extends Workflow<TransferState> {
             return effects().error("transfer not started");
         }
 
-        if (currentState().workflowStatus() != Transfer.WorkflowStatus.WAITING_FOR_CREDIT) {
+        if (currentState().workflowStatus() != WorkflowStatus.WAITING_FOR_CREDIT) {
             return effects().error("transfer is not in the right state");
         }
 
@@ -132,7 +128,7 @@ public class TransferWorkflow extends Workflow<TransferState> {
                         effects()
                                 .updateState(SimpleTransferState
                                         .fromTransferState(currentState())
-                                        .withStatus(Transfer.WorkflowStatus.WAITING_FOR_FRAUD_CHECK))
+                                        .withStatus(WorkflowStatus.WAITING_FOR_FRAUD_CHECK))
                                 .pause());
 
         Step debitAccount = step("debitSourceAccount")
@@ -148,7 +144,7 @@ public class TransferWorkflow extends Workflow<TransferState> {
                         effects()
                                 .updateState(SimpleTransferState
                                         .fromTransferState(currentState())
-                                        .withStatus(Transfer.WorkflowStatus.WAITING_FOR_DEBIT))
+                                        .withStatus(WorkflowStatus.WAITING_FOR_DEBIT))
                                 .pause());
 
         Step creditAccount = step("creditTargetAccount")
@@ -164,7 +160,7 @@ public class TransferWorkflow extends Workflow<TransferState> {
                         effects()
                                 .updateState(SimpleTransferState
                                         .fromTransferState(currentState())
-                                        .withStatus(Transfer.WorkflowStatus.WAITING_FOR_CREDIT))
+                                        .withStatus(WorkflowStatus.WAITING_FOR_CREDIT))
                                 .pause());
 
         return workflow()

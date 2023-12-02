@@ -4,7 +4,7 @@ import java.util.Locale;
 
 public record SimpleTransferState(
         TransferId id,
-        Transfer.WorkflowStatus workflowStatus,
+        WorkflowStatus workflowStatus,
         String failedReason,
         AccountId sourceAccountId,
         AccountId targetAccountId,
@@ -12,7 +12,7 @@ public record SimpleTransferState(
         Locale transactionLocation
 ) implements TransferState {
 
-    public TransferState withStatus(Transfer.WorkflowStatus status) {
+    public TransferState withStatus(WorkflowStatus status) {
         return new SimpleTransferState(
                 this.id,
                 status,

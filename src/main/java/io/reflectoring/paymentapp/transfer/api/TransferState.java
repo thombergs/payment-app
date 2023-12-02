@@ -5,7 +5,7 @@ import java.util.Locale;
 public interface TransferState {
     TransferId id();
 
-    Transfer.WorkflowStatus workflowStatus();
+    WorkflowStatus workflowStatus();
 
     String failedReason();
 
