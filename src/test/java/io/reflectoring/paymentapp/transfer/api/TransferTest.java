@@ -34,51 +34,51 @@ class TransferTest {
                 Locale.GERMANY
         );
 
-        assertThat(transfer.getStatus())
-                .isEqualTo(Transfer.TransferStatus.NOT_STARTED);
+        assertThat(transfer.workflowStatus())
+                .isEqualTo(Transfer.WorkflowStatus.NOT_STARTED);
 
         transfer.startTransfer();
         verify(outgoingEvents).requestFraudCheck(any());
-        assertThat(transfer.getStatus())
-                .isEqualTo(Transfer.TransferStatus.WAITING_FOR_FRAUD_CHECK);
+        assertThat(transfer.workflowStatus())
+                .isEqualTo(Transfer.WorkflowStatus.WAITING_FOR_FRAUD_CHECK);
 
         transfer.onFraudChecked(
                 new FraudCheckedEvent(
-                        transfer.getId(), FraudCheckedEvent.FraudCheckResult.SUCCESS),
+                        transfer.id(), FraudCheckedEvent.FraudCheckResult.SUCCESS),
                 false);
-        assertThat(transfer.getStatus())
-                .isEqualTo(Transfer.TransferStatus.FRAUD_CHECKED);
+        assertThat(transfer.workflowStatus())
+                .isEqualTo(Transfer.WorkflowStatus.FRAUD_CHECKED);
 
         transfer.continueTransfer();
         verify(outgoingEvents).requestAccountDebit(any());
-        assertThat(transfer.getStatus())
-                .isEqualTo(Transfer.TransferStatus.WAITING_FOR_DEBIT);
+        assertThat(transfer.workflowStatus())
+                .isEqualTo(Transfer.WorkflowStatus.WAITING_FOR_DEBIT);
 
         transfer.onSourceAccountDebited(
                 new AccountDebitedEvent(
-                        transfer.getId(),
+                        transfer.id(),
                         sourceAccountId,
                         amount,
                         AccountDebitedEvent.DebitResult.SUCCESS),
                 false
         );
-        assertThat(transfer.getStatus())
-                .isEqualTo(Transfer.TransferStatus.SOURCE_ACCOUNT_DEBITED);
+        assertThat(transfer.workflowStatus())
+                .isEqualTo(Transfer.WorkflowStatus.SOURCE_ACCOUNT_DEBITED);
 
         transfer.continueTransfer();
         verify(outgoingEvents).requestAccountCredit(any());
-        assertThat(transfer.getStatus())
-                .isEqualTo(Transfer.TransferStatus.WAITING_FOR_CREDIT);
+        assertThat(transfer.workflowStatus())
+                .isEqualTo(Transfer.WorkflowStatus.WAITING_FOR_CREDIT);
 
         transfer.onTargetAccountCredited(
                 new AccountCreditedEvent(
-                        transfer.getId(),
+                        transfer.id(),
                         sourceAccountId,
                         amount,
                         AccountCreditedEvent.CreditResult.SUCCESS)
         );
-        assertThat(transfer.getStatus())
-                .isEqualTo(Transfer.TransferStatus.COMPLETE);
+        assertThat(transfer.workflowStatus())
+                .isEqualTo(Transfer.WorkflowStatus.COMPLETE);
     }
 
 }

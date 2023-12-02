@@ -38,7 +38,7 @@ public class TransferController {
 
         transferService.continueTransfer(transfer);
 
-        return transfer.getStatus().toString();
+        return transfer.workflowStatus().toString();
     }
 
     @GetMapping("/transfers/{transferId}/status")
@@ -46,7 +46,7 @@ public class TransferController {
         Transfer transfer = transferService.findTransfer(new TransferId(transferId))
                 .orElseThrow(TransferNotFoundException::new);
 
-        return transfer.getStatus().toString();
+        return transfer.workflowStatus().toString();
     }
 
     @ExceptionHandler(TransferNotFoundException.class)

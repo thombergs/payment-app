@@ -9,16 +9,14 @@ import io.reflectoring.paymentapp.transfer.internal.outgoing.api.RequestAccountD
 import io.reflectoring.paymentapp.transfer.internal.outgoing.api.RequestFraudCheckEvent;
 
 import java.util.Locale;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
 
 import static java.util.Objects.requireNonNull;
 
-public class Transfer {
+public class Transfer implements TransferState {
 
     private final OutgoingEvents outgoingEvents;
 
-    public enum TransferStatus {
+    public enum WorkflowStatus {
         NOT_STARTED(TransferWorkflowAction.FRAUD_CHECK),
         WAITING_FOR_FRAUD_CHECK(TransferWorkflowAction.FRAUD_CHECK),
         FRAUD_CHECKED(TransferWorkflowAction.DEBIT_SOURCE_ACCOUNT),
@@ -30,7 +28,7 @@ public class Transfer {
 
         private final TransferWorkflowAction nextAction;
 
-        TransferStatus(TransferWorkflowAction nextAction) {
+        WorkflowStatus(TransferWorkflowAction nextAction) {
             this.nextAction = nextAction;
         }
 
@@ -47,7 +45,7 @@ public class Transfer {
     }
 
     private final TransferId id;
-    private TransferStatus status;
+    private WorkflowStatus workflowStatus;
     private String failedReason;
     private final AccountId sourceAccountId;
     private final AccountId targetAccountId;
@@ -66,44 +64,44 @@ public class Transfer {
         this.amount = requireNonNull(amount);
         this.transactionLocation = requireNonNull(transactionLocation);
         this.id = new TransferId();
-        this.status = TransferStatus.NOT_STARTED;
+        this.workflowStatus = WorkflowStatus.NOT_STARTED;
     }
 
-    public TransferId getId() {
+    public TransferId id() {
         return id;
     }
 
-    public String getFailedReason() {
+    public String failedReason() {
         return failedReason;
     }
 
-    public TransferStatus getStatus() {
-        return status;
+    public WorkflowStatus workflowStatus() {
+        return workflowStatus;
     }
 
-    public Money getAmount() {
+    public Money amount() {
         return amount;
     }
 
-    public AccountId getSourceAccountId() {
+    public AccountId sourceAccountId() {
         return sourceAccountId;
     }
 
-    public AccountId getTargetAccountId() {
+    public AccountId targetAccountId() {
         return targetAccountId;
     }
 
-    public Locale getTransactionLocation() {
+    public Locale transactionLocation() {
         return transactionLocation;
     }
 
     public void complete() {
-        this.status = TransferStatus.COMPLETE;
+        this.workflowStatus = WorkflowStatus.COMPLETE;
     }
 
     public void fail(String reason) {
         this.failedReason = reason;
-        this.status = TransferStatus.FAILED;
+        this.workflowStatus = WorkflowStatus.FAILED;
     }
 
     /**
@@ -122,7 +120,7 @@ public class Transfer {
      * needs to be updated in the data store.
      */
     public void continueTransfer() {
-        switch (this.status.nextAction) {
+        switch (this.workflowStatus.nextAction) {
 
             case FRAUD_CHECK -> {
                 outgoingEvents.requestFraudCheck(
@@ -130,7 +128,7 @@ public class Transfer {
                                 this.id,
                                 this.sourceAccountId,
                                 this.transactionLocation));
-                this.status = TransferStatus.WAITING_FOR_FRAUD_CHECK;
+                this.workflowStatus = WorkflowStatus.WAITING_FOR_FRAUD_CHECK;
             }
 
             case DEBIT_SOURCE_ACCOUNT -> {
@@ -138,9 +136,9 @@ public class Transfer {
                         new RequestAccountDebitEvent(
                                 this.id,
                                 this.sourceAccountId,
-                                this.getAmount()
+                                this.amount()
                         ));
-                this.status = TransferStatus.WAITING_FOR_DEBIT;
+                this.workflowStatus = WorkflowStatus.WAITING_FOR_DEBIT;
             }
 
             case CREDIT_TARGET_ACCOUNT -> {
@@ -148,9 +146,9 @@ public class Transfer {
                         new RequestAccountCreditEvent(
                                 this.id,
                                 this.targetAccountId,
-                                this.getAmount()
+                                this.amount()
                         ));
-                this.status = TransferStatus.WAITING_FOR_CREDIT;
+                this.workflowStatus = WorkflowStatus.WAITING_FOR_CREDIT;
             }
 
             case NONE -> {
@@ -164,7 +162,7 @@ public class Transfer {
             throw new IllegalStateException(String.format("event was targeted at different transfer (expected transfer ID: %s; actual transfer ID: %s)!", this.id, event.transferId()));
         }
 
-        if (this.getStatus() != TransferStatus.WAITING_FOR_FRAUD_CHECK) {
+        if (this.workflowStatus() != WorkflowStatus.WAITING_FOR_FRAUD_CHECK) {
             // idempotency: in case of duplicate event, we don't want to do anything
             return;
         }
@@ -174,7 +172,7 @@ public class Transfer {
             return;
         }
 
-        this.status = TransferStatus.FRAUD_CHECKED;
+        this.workflowStatus = WorkflowStatus.FRAUD_CHECKED;
 
         if (continueTransfer) {
             continueTransfer();
@@ -186,7 +184,7 @@ public class Transfer {
             throw new IllegalStateException(String.format("event was targeted at different transfer (expected transfer ID: %s; actual transfer ID: %s)!", this.id, event.transferId()));
         }
 
-        if (this.getStatus() != TransferStatus.WAITING_FOR_DEBIT) {
+        if (this.workflowStatus() != WorkflowStatus.WAITING_FOR_DEBIT) {
             // idempotency: in case of duplicate event, we don't want to do anything
             return;
         }
@@ -196,7 +194,7 @@ public class Transfer {
             return;
         }
 
-        this.status = TransferStatus.SOURCE_ACCOUNT_DEBITED;
+        this.workflowStatus = WorkflowStatus.SOURCE_ACCOUNT_DEBITED;
 
         if (continueTransfer) {
             continueTransfer();
@@ -208,7 +206,7 @@ public class Transfer {
             throw new IllegalStateException(String.format("event was targeted at different transfer (expected transfer ID: %s; actual transfer ID: %s)!", this.id, event.transferId()));
         }
 
-        if (this.getStatus() != TransferStatus.WAITING_FOR_CREDIT) {
+        if (this.workflowStatus() != WorkflowStatus.WAITING_FOR_CREDIT) {
             // idempotency: in case of duplicate event, we don't want to do anything
             return;
         }
@@ -218,7 +216,19 @@ public class Transfer {
             return;
         }
 
-        this.status = TransferStatus.COMPLETE;
+        this.workflowStatus = WorkflowStatus.COMPLETE;
+    }
+
+    public TransferState getState() {
+        return new SimpleTransferState(
+                this.id,
+                this.workflowStatus,
+                this.failedReason,
+                this.sourceAccountId,
+                this.targetAccountId,
+                this.amount,
+                this.transactionLocation
+        );
     }
 
 }

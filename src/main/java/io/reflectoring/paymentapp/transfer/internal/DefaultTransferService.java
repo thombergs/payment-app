@@ -9,6 +9,7 @@ import io.reflectoring.paymentapp.transfer.api.Transfer;
 import io.reflectoring.paymentapp.transfer.api.TransferId;
 import io.reflectoring.paymentapp.transfer.api.TransferNotFoundException;
 import io.reflectoring.paymentapp.transfer.api.TransferService;
+import io.reflectoring.paymentapp.transfer.api.TransferState;
 import io.reflectoring.paymentapp.transfer.internal.incoming.api.AccountCreditedEvent;
 import io.reflectoring.paymentapp.transfer.internal.incoming.api.AccountDebitedEvent;
 import io.reflectoring.paymentapp.transfer.internal.incoming.api.FraudCheckedEvent;
@@ -80,7 +81,7 @@ public class DefaultTransferService implements TransferService {
         // Persist the new state of the transfer again.
         updateTransfer(transfer);
 
-        return transfer.getId();
+        return transfer.id();
     }
 
     @Override
@@ -111,5 +112,15 @@ public class DefaultTransferService implements TransferService {
         transfer.onTargetAccountCredited(event);
 
         updateTransfer(transfer);
+    }
+
+    @Override
+    public Transfer fromState(TransferState state) {
+        return new Transfer(
+                this.outgoingEvents,
+                state.sourceAccountId(),
+                state.targetAccountId(),
+                state.amount(),
+                state.transactionLocation());
     }
 }

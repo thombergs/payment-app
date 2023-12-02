@@ -35,4 +35,6 @@ public interface TransferService {
     void onSourceAccountDebited(AccountDebitedEvent event);
 
     void onTargetAccountCredited(AccountCreditedEvent event);
+
+    Transfer fromState(TransferState state);
 }

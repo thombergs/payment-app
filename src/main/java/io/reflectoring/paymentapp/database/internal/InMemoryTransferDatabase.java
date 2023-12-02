@@ -21,6 +21,6 @@ public class InMemoryTransferDatabase implements TransferDatabase {
 
     @Override
     public void update(Transfer transfer) {
-        this.database.put(transfer.getId(), transfer);
+        this.database.put(transfer.id(), transfer);
     }
 }
