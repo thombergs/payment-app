@@ -18,6 +18,8 @@ import kalix.javasdk.annotations.Id;
 import kalix.javasdk.annotations.TypeId;
 import kalix.javasdk.client.ComponentClient;
 import kalix.javasdk.workflow.Workflow;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,6 +32,8 @@ import java.util.Locale;
 @Id("id")
 @RequestMapping("/transfer/{id}")
 public class TransferWorkflow extends Workflow<TransferState> {
+
+    private static final Logger logger = LoggerFactory.getLogger(TransferWorkflow.class);
 
     private final ComponentClient componentClient;
 
@@ -126,14 +130,16 @@ public class TransferWorkflow extends Workflow<TransferState> {
     public WorkflowDef<TransferState> definition() {
 
         Step fraudCheck = step("fraudCheck")
-                .call(TransferState.class, transferState ->
-                        componentClient.forAction()
-                                .call(OutgoingEventAction::requestFraudCheck)
-                                .params(new RequestFraudCheckEvent(
-                                        transferState.id(),
-                                        transferState.sourceAccountId(),
-                                        transferState.transactionLocation()
-                                )))
+                .call(TransferState.class, transferState -> {
+                    logger.info("executing step 'fraudCheck'");
+                    return componentClient.forAction()
+                            .call(OutgoingEventAction::requestFraudCheck)
+                            .params(new RequestFraudCheckEvent(
+                                    transferState.id(),
+                                    transferState.sourceAccountId(),
+                                    transferState.transactionLocation()
+                            ));
+                })
                 .andThen(String.class, __ ->
                         effects()
                                 .updateState(SimpleTransferState
