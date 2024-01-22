@@ -18,6 +18,7 @@ import kalix.javasdk.annotations.Id;
 import kalix.javasdk.annotations.TypeId;
 import kalix.javasdk.client.ComponentClient;
 import kalix.javasdk.workflow.Workflow;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -46,7 +47,7 @@ public class TransferWorkflow extends Workflow<TransferState> {
         if (currentState() != null) {
             // TODO: This check only works because the client has to provide the
             // transfer id even when starting the transfer. Does this mean
-            // that the client has to control the transfer ID?
+            // that the client MUST control the transfer ID?
             // Is there a way for the server to control the transfer ID?
             return effects().error("Transfer already started!");
         }
@@ -64,7 +65,16 @@ public class TransferWorkflow extends Workflow<TransferState> {
         return effects()
                 .updateState(initialState)
                 .transitionTo("fraudCheck", initialState)
-                .thenReply(new Message("Transfer already started"));
+                .thenReply(new Message("Transfer started"));
+    }
+
+    @GetMapping("/status")
+    public Effect<Message> status(@PathVariable("id") String id){
+        if (currentState() == null) {
+            return effects().error("Transfer not found!");
+        }
+
+        return effects().reply(new Message(currentState().workflowStatus().toString()));
     }
 
     @PostMapping("/on-fraud-checked")

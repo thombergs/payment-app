@@ -12,11 +12,9 @@ import org.springframework.scheduling.annotation.EnableAsync;
 // Kalix service, but disallow access from the internet. This can be overridden explicitly
 // per component or method using annotations.
 // Documentation at https://docs.kalix.io/services/using-acls.html
-@Acl(allow = @Acl.Matcher(service = "*"))
+@Acl(allow = @Acl.Matcher(principal = Acl.Principal.INTERNET))
 @EnableAsync
 public class TransferApplication {
-
-    private static final Logger logger = LoggerFactory.getLogger(TransferApplication.class);
 
     public static void main(String[] args) {
         SpringApplication.run(TransferApplication.class, args);
