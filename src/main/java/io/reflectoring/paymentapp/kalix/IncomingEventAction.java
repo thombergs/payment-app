@@ -5,12 +5,16 @@ import io.reflectoring.paymentapp.transfer.internal.incoming.api.AccountDebitedE
 import io.reflectoring.paymentapp.transfer.internal.incoming.api.FraudCheckedEvent;
 import kalix.javasdk.action.Action;
 import kalix.javasdk.client.ComponentClient;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @RequestMapping("/incoming")
 public class IncomingEventAction extends Action {
+
+    private static final Logger logger = LoggerFactory.getLogger(IncomingEventAction.class);
 
     private final ComponentClient componentClient;
 
@@ -21,6 +25,7 @@ public class IncomingEventAction extends Action {
 
     @PostMapping("/fraud-checked")
     public Effect<String> onFraudChecked(@RequestBody FraudCheckedEvent event) {
+        logger.info("received event {}", event);
         componentClient.forWorkflow("transfer")
                 .call(TransferWorkflow::onFraudChecked)
                 .params(event);

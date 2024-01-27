@@ -8,8 +8,15 @@ import io.reflectoring.paymentapp.transfer.internal.outgoing.api.RequestAccountC
 import io.reflectoring.paymentapp.transfer.internal.outgoing.api.RequestAccountDebitEvent;
 import io.reflectoring.paymentapp.transfer.internal.outgoing.api.RequestFraudCheckEvent;
 import kalix.javasdk.client.ComponentClient;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.event.EventListener;
+import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestClient;
+
+import java.util.Map;
 
 /**
  * This class mocks the external payment service that is responsible for debiting and crediting
@@ -28,26 +35,35 @@ import org.springframework.stereotype.Component;
 @Component
 public class ExternalServicesMock {
 
+    private static final Logger logger = LoggerFactory.getLogger(ExternalServicesMock.class);
+
     private final ComponentClient componentClient;
 
     public ExternalServicesMock(ComponentClient componentClient) {
         this.componentClient = componentClient;
     }
 
+    @Async
     @EventListener(RequestFraudCheckEvent.class)
     public void onRequestFraudCheck(RequestFraudCheckEvent event) throws InterruptedException {
-        Thread.sleep(10000);
-        componentClient.forAction()
-                .call(IncomingEventAction::onFraudChecked)
-                .params(new FraudCheckedEvent(
+        logger.info("received event {}", event);
+        simulateLongResponseTime();
+
+        RestClient restClient = RestClient.create("http://localhost:9000");
+        ResponseEntity<String> response = restClient.post()
+                .uri("/transfer/{id}/on-fraud-checked", Map.of("id", event.transferId().uuid()))
+                .body(new FraudCheckedEvent(
                         event.transferId(),
-                        FraudCheckedEvent.FraudCheckResult.SUCCESS
-                ));
+                        FraudCheckedEvent.FraudCheckResult.SUCCESS))
+                .retrieve()
+                .toEntity(String.class);
+        logger.info("reported FraudCheckResult to workflow with result: {}", response.getStatusCode());
     }
 
+    @Async
     @EventListener(RequestAccountDebitEvent.class)
     public void onRequestAccountDebitEvent(RequestAccountDebitEvent event) throws InterruptedException {
-        Thread.sleep(10000);
+        simulateLongResponseTime();
         componentClient.forAction()
                 .call(IncomingEventAction::onAccountDebited)
                 .params(new AccountDebitedEvent(
@@ -58,9 +74,10 @@ public class ExternalServicesMock {
                 ));
     }
 
+    @Async
     @EventListener(RequestAccountCreditEvent.class)
     public void onRequestAccountCreditEvent(RequestAccountCreditEvent event) throws InterruptedException {
-        Thread.sleep(10000);
+        simulateLongResponseTime();
         componentClient.forAction()
                 .call(IncomingEventAction::onAccountCredited)
                 .params(new AccountCreditedEvent(
@@ -71,5 +88,8 @@ public class ExternalServicesMock {
                 ));
     }
 
+    private static void simulateLongResponseTime() throws InterruptedException {
+        Thread.sleep(10000);
+    }
 
 }

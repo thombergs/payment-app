@@ -83,6 +83,7 @@ public class TransferWorkflow extends Workflow<TransferState> {
 
     @PostMapping("/on-fraud-checked")
     public Effect<Message> onFraudChecked(@RequestBody FraudCheckedEvent event) {
+        logger.info("received event {}", event);
         if (currentState() == null) {
             return effects().error("transfer not started");
         }
