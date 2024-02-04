@@ -123,6 +123,9 @@ public class TransferWorkflow extends Workflow<TransferState> {
         }
 
         return effects()
+                .updateState(SimpleTransferState
+                        .fromTransferState(currentState())
+                        .withStatus(WorkflowStatus.COMPLETE))
                 .end()
                 .thenReply(new Message("transfer finished"));
     }
