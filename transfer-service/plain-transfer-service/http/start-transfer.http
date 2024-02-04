@@ -1,0 +1,29 @@
+POST http://localhost:8080/transfer/12345/start
+Accept: application/json
+Content-Type: application/json
+
+{
+  "sourceAccountId": "321",
+  "targetAccountId": "456",
+  "amount": 9999,
+  "currency": "USD",
+  "transactionLocation": "en_AU"
+}
+
+<> 2024-01-23T103430.200.json
+<> 2023-12-17T185455.200.json
+<> 2023-12-17T185013.200.json
+<> 2023-12-17T184623.500.txt
+<> 2023-12-17T184619.500.txt
+<> 2023-12-17T184613.500.txt
+<> 2023-12-17T184608.200.json
+<> 2023-12-17T184350.200.json
+<> 2023-12-17T184346.200.json
+<> 2023-12-17T184341.500.txt
+<> 2023-12-17T183907.200.json
+<> 2023-12-17T182547.400.txt
+<> 2023-12-17T181906.400.txt
+<> 2023-12-17T132050.404.json
+<> 2023-12-17T123734.404.json
+
+###

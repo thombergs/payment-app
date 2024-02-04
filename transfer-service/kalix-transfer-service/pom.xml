@@ -8,7 +8,7 @@
     <relativePath/> 
   </parent>
   <groupId>io.reflectoring</groupId>
-  <artifactId>kalix-sandbox</artifactId>
+  <artifactId>kalix-transfer-service</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
