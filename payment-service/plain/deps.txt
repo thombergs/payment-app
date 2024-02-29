@@ -1,0 +1,171 @@
+[MVNVM] Using maven: 3.9.6
+[INFO] Scanning for projects...
+Downloading from maven-atlassian-com: https://packages.atlassian.com/maven/repository/internal/org/flywaydb/flyway-maven-plugin/9.22.3/flyway-maven-plugin-9.22.3.pom
+Progress (1): 4.4 kB                    Downloaded from maven-atlassian-com: https://packages.atlassian.com/maven/repository/internal/org/flywaydb/flyway-maven-plugin/9.22.3/flyway-maven-plugin-9.22.3.pom (4.4 kB at 3.7 kB/s)
+Downloading from maven-atlassian-com: https://packages.atlassian.com/maven/repository/internal/org/flywaydb/flyway-maven-plugin/9.22.3/flyway-maven-plugin-9.22.3.jar
+Progress (1): 7.0/112 kBProgress (1): 15/112 kB Progress (1): 17/112 kBProgress (1): 33/112 kBProgress (1): 50/112 kBProgress (1): 59/112 kBProgress (1): 66/112 kBProgress (1): 83/112 kBProgress (1): 86/112 kBProgress (1): 102/112 kBProgress (1): 112 kB                        Downloaded from maven-atlassian-com: https://packages.atlassian.com/maven/repository/internal/org/flywaydb/flyway-maven-plugin/9.22.3/flyway-maven-plugin-9.22.3.jar (112 kB at 55 kB/s)
+Downloading from maven-atlassian-com: https://packages.atlassian.com/maven/repository/internal/org/jooq/jooq-codegen-maven/3.18.9/jooq-codegen-maven-3.18.9.pom
+Progress (1): 4.5 kB                    Downloaded from maven-atlassian-com: https://packages.atlassian.com/maven/repository/internal/org/jooq/jooq-codegen-maven/3.18.9/jooq-codegen-maven-3.18.9.pom (4.5 kB at 5.1 kB/s)
+Downloading from maven-atlassian-com: https://packages.atlassian.com/maven/repository/internal/org/jooq/jooq-parent/3.18.9/jooq-parent-3.18.9.pom
+Progress (1): 7.0/38 kBProgress (1): 15/38 kB Progress (1): 16/38 kBProgress (1): 17/38 kBProgress (1): 34/38 kBProgress (1): 38 kB                      Downloaded from maven-atlassian-com: https://packages.atlassian.com/maven/repository/internal/org/jooq/jooq-parent/3.18.9/jooq-parent-3.18.9.pom (38 kB at 30 kB/s)
+Downloading from maven-atlassian-com: https://packages.atlassian.com/maven/repository/internal/org/jooq/jooq-codegen-maven/3.18.9/jooq-codegen-maven-3.18.9.jar
+Progress (1): 7.0/18 kBProgress (1): 8.2/18 kBProgress (1): 18 kB                       Downloaded from maven-atlassian-com: https://packages.atlassian.com/maven/repository/internal/org/jooq/jooq-codegen-maven/3.18.9/jooq-codegen-maven-3.18.9.jar (18 kB at 16 kB/s)
+Downloading from maven-atlassian-com: https://packages.atlassian.com/maven/repository/internal/org/jetbrains/kotlin/kotlin-maven-plugin/1.9.22/kotlin-maven-plugin-1.9.22.pom
+Progress (1): 6.7 kB                    Downloaded from maven-atlassian-com: https://packages.atlassian.com/maven/repository/internal/org/jetbrains/kotlin/kotlin-maven-plugin/1.9.22/kotlin-maven-plugin-1.9.22.pom (6.7 kB at 7.9 kB/s)
+Downloading from maven-atlassian-com: https://packages.atlassian.com/maven/repository/internal/org/jetbrains/kotlin/kotlin-project/1.9.22/kotlin-project-1.9.22.pom
+Progress (1): 7.0/16 kBProgress (1): 15/16 kB Progress (1): 16 kB                      Downloaded from maven-atlassian-com: https://packages.atlassian.com/maven/repository/internal/org/jetbrains/kotlin/kotlin-project/1.9.22/kotlin-project-1.9.22.pom (16 kB at 15 kB/s)
+Downloading from maven-atlassian-com: https://packages.atlassian.com/maven/repository/internal/org/jetbrains/kotlin/kotlin-maven-plugin/1.9.22/kotlin-maven-plugin-1.9.22.jar
+Progress (1): 7.0/82 kBProgress (1): 15/82 kB Progress (1): 32/82 kBProgress (1): 33/82 kBProgress (1): 46/82 kBProgress (1): 50/82 kBProgress (1): 53/82 kBProgress (1): 66/82 kBProgress (1): 69/82 kBProgress (1): 71/82 kBProgress (1): 82 kB                      Downloaded from maven-atlassian-com: https://packages.atlassian.com/maven/repository/internal/org/jetbrains/kotlin/kotlin-maven-plugin/1.9.22/kotlin-maven-plugin-1.9.22.jar (82 kB at 66 kB/s)
+Downloading from maven-atlassian-com: https://packages.atlassian.com/maven/repository/internal/org/liquibase/liquibase-maven-plugin/4.24.0/liquibase-maven-plugin-4.24.0.pom
+Progress (1): 2.0 kB                    Downloaded from maven-atlassian-com: https://packages.atlassian.com/maven/repository/internal/org/liquibase/liquibase-maven-plugin/4.24.0/liquibase-maven-plugin-4.24.0.pom (2.0 kB at 2.2 kB/s)
+Downloading from maven-atlassian-com: https://packages.atlassian.com/maven/repository/internal/org/liquibase/liquibase-maven-plugin/4.24.0/liquibase-maven-plugin-4.24.0.jar
+Progress (1): 7.5/161 kBProgress (1): 16/161 kB Progress (1): 32/161 kBProgress (1): 33/161 kBProgress (1): 49/161 kBProgress (1): 50/161 kBProgress (1): 67/161 kBProgress (1): 83/161 kBProgress (1): 100/161 kBProgress (1): 116/161 kBProgress (1): 132/161 kBProgress (1): 137/161 kBProgress (1): 154/161 kBProgress (1): 161 kB                        Downloaded from maven-atlassian-com: https://packages.atlassian.com/maven/repository/internal/org/liquibase/liquibase-maven-plugin/4.24.0/liquibase-maven-plugin-4.24.0.jar (161 kB at 48 kB/s)
+Downloading from maven-atlassian-com: https://packages.atlassian.com/maven/repository/internal/org/apache/maven/plugins/maven-assembly-plugin/3.6.0/maven-assembly-plugin-3.6.0.pom
+Progress (1): 7.0/15 kBProgress (1): 15 kB                       Downloaded from maven-atlassian-com: https://packages.atlassian.com/maven/repository/internal/org/apache/maven/plugins/maven-assembly-plugin/3.6.0/maven-assembly-plugin-3.6.0.pom (15 kB at 14 kB/s)
+Downloading from maven-atlassian-com: https://packages.atlassian.com/maven/repository/internal/org/apache/maven/plugins/maven-assembly-plugin/3.6.0/maven-assembly-plugin-3.6.0.jar
+Progress (1): 7.5/236 kBProgress (1): 16/236 kB Progress (1): 32/236 kBProgress (1): 48/236 kBProgress (1): 64/236 kBProgress (1): 80/236 kBProgress (1): 97/236 kBProgress (1): 113/236 kBProgress (1): 130/236 kBProgress (1): 146/236 kBProgress (1): 162/236 kBProgress (1): 179/236 kBProgress (1): 195/236 kBProgress (1): 211/236 kBProgress (1): 228/236 kBProgress (1): 236 kB                        Downloaded from maven-atlassian-com: https://packages.atlassian.com/maven/repository/internal/org/apache/maven/plugins/maven-assembly-plugin/3.6.0/maven-assembly-plugin-3.6.0.jar (236 kB at 138 kB/s)
+Downloading from maven-atlassian-com: https://packages.atlassian.com/maven/repository/internal/org/apache/maven/plugins/maven-dependency-plugin/3.6.1/maven-dependency-plugin-3.6.1.pom
+Progress (1): 16/18 kBProgress (1): 18 kB                      Downloaded from maven-atlassian-com: https://packages.atlassian.com/maven/repository/internal/org/apache/maven/plugins/maven-dependency-plugin/3.6.1/maven-dependency-plugin-3.6.1.pom (18 kB at 17 kB/s)
+Downloading from maven-atlassian-com: https://packages.atlassian.com/maven/repository/internal/org/apache/maven/plugins/maven-dependency-plugin/3.6.1/maven-dependency-plugin-3.6.1.jar
+Progress (1): 16/191 kBProgress (1): 33/191 kBProgress (1): 49/191 kBProgress (1): 66/191 kBProgress (1): 82/191 kBProgress (1): 98/191 kBProgress (1): 115/191 kBProgress (1): 130/191 kBProgress (1): 146/191 kBProgress (1): 162/191 kBProgress (1): 179/191 kBProgress (1): 190/191 kBProgress (1): 191 kB                        Downloaded from maven-atlassian-com: https://packages.atlassian.com/maven/repository/internal/org/apache/maven/plugins/maven-dependency-plugin/3.6.1/maven-dependency-plugin-3.6.1.jar (191 kB at 111 kB/s)
+[INFO] 
+[INFO] ---------------< io.reflectoring:plain-external-service >---------------
+[INFO] Building plain-external-service 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- dependency:3.6.1:tree (default-cli) @ plain-external-service ---
+Downloading from maven-atlassian-com: https://packages.atlassian.com/maven/repository/internal/org/codehaus/plexus/plexus-archiver/4.8.0/plexus-archiver-4.8.0.pom
+Progress (1): 6.1 kB                    Downloaded from maven-atlassian-com: https://packages.atlassian.com/maven/repository/internal/org/codehaus/plexus/plexus-archiver/4.8.0/plexus-archiver-4.8.0.pom (6.1 kB at 7.3 kB/s)
+Downloading from maven-atlassian-com: https://packages.atlassian.com/maven/repository/internal/org/codehaus/plexus/plexus/14/plexus-14.pom
+Progress (1): 16/28 kBProgress (1): 28 kB                      Downloaded from maven-atlassian-com: https://packages.atlassian.com/maven/repository/internal/org/codehaus/plexus/plexus/14/plexus-14.pom (28 kB at 27 kB/s)
+Downloading from maven-atlassian-com: https://packages.atlassian.com/maven/repository/internal/com/github/luben/zstd-jni/1.5.5-5/zstd-jni-1.5.5-5.pom
+Progress (1): 1.9 kB                    Downloaded from maven-atlassian-com: https://packages.atlassian.com/maven/repository/internal/com/github/luben/zstd-jni/1.5.5-5/zstd-jni-1.5.5-5.pom (1.9 kB at 7.6 kB/s)
+Downloading from maven-atlassian-com: https://packages.atlassian.com/maven/repository/internal/org/codehaus/plexus/plexus-archiver/4.8.0/plexus-archiver-4.8.0.jar
+Progress (1): 16/224 kBProgress (1): 33/224 kBProgress (1): 49/224 kBProgress (1): 64/224 kBProgress (1): 77/224 kBProgress (1): 83/224 kBProgress (1): 96/224 kBProgress (1): 102/224 kBProgress (1): 109/224 kBProgress (1): 122/224 kBProgress (1): 128/224 kBProgress (1): 130/224 kBProgress (1): 142/224 kBProgress (1): 149/224 kBProgress (1): 155/224 kBProgress (1): 162/224 kBProgress (1): 174/224 kBProgress (1): 181/224 kBProgress (1): 194/224 kBProgress (1): 206/224 kBProgress (1): 219/224 kBProgress (1): 224 kB                        Downloaded from maven-atlassian-com: https://packages.atlassian.com/maven/repository/internal/org/codehaus/plexus/plexus-archiver/4.8.0/plexus-archiver-4.8.0.jar (224 kB at 131 kB/s)
+Downloading from maven-atlassian-com: https://packages.atlassian.com/maven/repository/internal/com/github/luben/zstd-jni/1.5.5-5/zstd-jni-1.5.5-5.jar
+Progress (1): 0/5.9 MBProgress (1): 0/5.9 MBProgress (1): 0/5.9 MBProgress (1): 0.1/5.9 MBProgress (1): 0.1/5.9 MBProgress (1): 0.1/5.9 MBProgress (1): 0.1/5.9 MBProgress (1): 0.1/5.9 MBProgress (1): 0.1/5.9 MBProgress (1): 0.1/5.9 MBProgress (1): 0.2/5.9 MBProgress (1): 0.2/5.9 MBProgress (1): 0.2/5.9 MBProgress (1): 0.2/5.9 MBProgress (1): 0.2/5.9 MBProgress (1): 0.2/5.9 MBProgress (1): 0.2/5.9 MBProgress (1): 0.2/5.9 MBProgress (1): 0.3/5.9 MBProgress (1): 0.3/5.9 MBProgress (1): 0.3/5.9 MBProgress (1): 0.3/5.9 MBProgress (1): 0.3/5.9 MBProgress (1): 0.3/5.9 MBProgress (1): 0.3/5.9 MBProgress (1): 0.3/5.9 MBProgress (1): 0.4/5.9 MBProgress (1): 0.4/5.9 MBProgress (1): 0.4/5.9 MBProgress (1): 0.4/5.9 MBProgress (1): 0.4/5.9 MBProgress (1): 0.4/5.9 MBProgress (1): 0.4/5.9 MBProgress (1): 0.4/5.9 MBProgress (1): 0.5/5.9 MBProgress (1): 0.5/5.9 MBProgress (1): 0.5/5.9 MBProgress (1): 0.5/5.9 MBProgress (1): 0.5/5.9 MBProgress (1): 0.5/5.9 MBProgress (1): 0.5/5.9 MBProgress (1): 0.5/5.9 MBProgress (1): 0.6/5.9 MBProgress (1): 0.6/5.9 MBProgress (1): 0.6/5.9 MBProgress (1): 0.6/5.9 MBProgress (1): 0.6/5.9 MBProgress (1): 0.6/5.9 MBProgress (1): 0.6/5.9 MBProgress (1): 0.6/5.9 MBProgress (1): 0.6/5.9 MBProgress (1): 0.6/5.9 MBProgress (1): 0.6/5.9 MBProgress (1): 0.7/5.9 MBProgress (1): 0.7/5.9 MBProgress (1): 0.7/5.9 MBProgress (1): 0.7/5.9 MBProgress (1): 0.7/5.9 MBProgress (1): 0.7/5.9 MBProgress (1): 0.7/5.9 MBProgress (1): 0.7/5.9 MBProgress (1): 0.7/5.9 MBProgress (1): 0.8/5.9 MBProgress (1): 0.8/5.9 MBProgress (1): 0.8/5.9 MBProgress (1): 0.8/5.9 MBProgress (1): 0.8/5.9 MBProgress (1): 0.8/5.9 MBProgress (1): 0.8/5.9 MBProgress (1): 0.8/5.9 MBProgress (1): 0.8/5.9 MBProgress (1): 0.9/5.9 MBProgress (1): 0.9/5.9 MBProgress (1): 0.9/5.9 MBProgress (1): 0.9/5.9 MBProgress (1): 0.9/5.9 MBProgress (1): 0.9/5.9 MBProgress (1): 0.9/5.9 MBProgress (1): 0.9/5.9 MBProgress (1): 0.9/5.9 MBProgress (1): 1.0/5.9 MBProgress (1): 1.0/5.9 MBProgress (1): 1.0/5.9 MBProgress (1): 1.0/5.9 MBProgress (1): 1.0/5.9 MBProgress (1): 1.0/5.9 MBProgress (1): 1.0/5.9 MBProgress (1): 1.0/5.9 MBProgress (1): 1.0/5.9 MBProgress (1): 1.1/5.9 MBProgress (1): 1.1/5.9 MBProgress (1): 1.1/5.9 MBProgress (1): 1.1/5.9 MBProgress (1): 1.1/5.9 MBProgress (1): 1.1/5.9 MBProgress (1): 1.1/5.9 MBProgress (1): 1.1/5.9 MBProgress (1): 1.2/5.9 MBProgress (1): 1.2/5.9 MBProgress (1): 1.2/5.9 MBProgress (1): 1.2/5.9 MBProgress (1): 1.2/5.9 MBProgress (1): 1.2/5.9 MBProgress (1): 1.2/5.9 MBProgress (1): 1.2/5.9 MBProgress (1): 1.2/5.9 MBProgress (1): 1.3/5.9 MBProgress (1): 1.3/5.9 MBProgress (1): 1.3/5.9 MBProgress (1): 1.3/5.9 MBProgress (1): 1.3/5.9 MBProgress (1): 1.3/5.9 MBProgress (1): 1.3/5.9 MBProgress (1): 1.3/5.9 MBProgress (1): 1.3/5.9 MBProgress (1): 1.3/5.9 MBProgress (1): 1.3/5.9 MBProgress (1): 1.3/5.9 MBProgress (1): 1.4/5.9 MBProgress (1): 1.4/5.9 MBProgress (1): 1.4/5.9 MBProgress (1): 1.4/5.9 MBProgress (1): 1.4/5.9 MBProgress (1): 1.4/5.9 MBProgress (1): 1.4/5.9 MBProgress (1): 1.4/5.9 MBProgress (1): 1.5/5.9 MBProgress (1): 1.5/5.9 MBProgress (1): 1.5/5.9 MBProgress (1): 1.5/5.9 MBProgress (1): 1.5/5.9 MBProgress (1): 1.5/5.9 MBProgress (1): 1.5/5.9 MBProgress (1): 1.5/5.9 MBProgress (1): 1.5/5.9 MBProgress (1): 1.5/5.9 MBProgress (1): 1.5/5.9 MBProgress (1): 1.6/5.9 MBProgress (1): 1.6/5.9 MBProgress (1): 1.6/5.9 MBProgress (1): 1.6/5.9 MBProgress (1): 1.6/5.9 MBProgress (1): 1.6/5.9 MBProgress (1): 1.6/5.9 MBProgress (1): 1.6/5.9 MBProgress (1): 1.6/5.9 MBProgress (1): 1.7/5.9 MBProgress (1): 1.7/5.9 MBProgress (1): 1.7/5.9 MBProgress (1): 1.7/5.9 MBProgress (1): 1.7/5.9 MBProgress (1): 1.7/5.9 MBProgress (1): 1.7/5.9 MBProgress (1): 1.7/5.9 MBProgress (1): 1.7/5.9 MBProgress (1): 1.7/5.9 MBProgress (1): 1.7/5.9 MBProgress (1): 1.7/5.9 MBProgress (1): 1.7/5.9 MBProgress (1): 1.7/5.9 MBProgress (1): 1.7/5.9 MBProgress (1): 1.8/5.9 MBProgress (1): 1.8/5.9 MBProgress (1): 1.8/5.9 MBProgress (1): 1.8/5.9 MBProgress (1): 1.8/5.9 MBProgress (1): 1.8/5.9 MBProgress (1): 1.8/5.9 MBProgress (1): 1.8/5.9 MBProgress (1): 1.8/5.9 MBProgress (1): 1.8/5.9 MBProgress (1): 1.9/5.9 MBProgress (1): 1.9/5.9 MBProgress (1): 1.9/5.9 MBProgress (1): 1.9/5.9 MBProgress (1): 1.9/5.9 MBProgress (1): 1.9/5.9 MBProgress (1): 1.9/5.9 MBProgress (1): 2.0/5.9 MBProgress (1): 2.0/5.9 MBProgress (1): 2.0/5.9 MBProgress (1): 2.0/5.9 MBProgress (1): 2.0/5.9 MBProgress (1): 2.0/5.9 MBProgress (1): 2.1/5.9 MBProgress (1): 2.1/5.9 MBProgress (1): 2.1/5.9 MBProgress (1): 2.1/5.9 MBProgress (1): 2.1/5.9 MBProgress (1): 2.1/5.9 MBProgress (1): 2.2/5.9 MBProgress (1): 2.2/5.9 MBProgress (1): 2.2/5.9 MBProgress (1): 2.2/5.9 MBProgress (1): 2.2/5.9 MBProgress (1): 2.2/5.9 MBProgress (1): 2.2/5.9 MBProgress (1): 2.2/5.9 MBProgress (1): 2.3/5.9 MBProgress (1): 2.3/5.9 MBProgress (1): 2.3/5.9 MBProgress (1): 2.3/5.9 MBProgress (1): 2.3/5.9 MBProgress (1): 2.3/5.9 MBProgress (1): 2.3/5.9 MBProgress (1): 2.3/5.9 MBProgress (1): 2.4/5.9 MBProgress (1): 2.4/5.9 MBProgress (1): 2.4/5.9 MBProgress (1): 2.4/5.9 MBProgress (1): 2.4/5.9 MBProgress (1): 2.4/5.9 MBProgress (1): 2.4/5.9 MBProgress (1): 2.4/5.9 MBProgress (1): 2.5/5.9 MBProgress (1): 2.5/5.9 MBProgress (1): 2.5/5.9 MBProgress (1): 2.5/5.9 MBProgress (1): 2.5/5.9 MBProgress (1): 2.5/5.9 MBProgress (1): 2.5/5.9 MBProgress (1): 2.5/5.9 MBProgress (1): 2.5/5.9 MBProgress (1): 2.6/5.9 MBProgress (1): 2.6/5.9 MBProgress (1): 2.6/5.9 MBProgress (1): 2.6/5.9 MBProgress (1): 2.6/5.9 MBProgress (1): 2.6/5.9 MBProgress (1): 2.6/5.9 MBProgress (1): 2.6/5.9 MBProgress (1): 2.7/5.9 MBProgress (1): 2.7/5.9 MBProgress (1): 2.7/5.9 MBProgress (1): 2.7/5.9 MBProgress (1): 2.7/5.9 MBProgress (1): 2.7/5.9 MBProgress (1): 2.7/5.9 MBProgress (1): 2.8/5.9 MBProgress (1): 2.8/5.9 MBProgress (1): 2.8/5.9 MBProgress (1): 2.8/5.9 MBProgress (1): 2.8/5.9 MBProgress (1): 2.8/5.9 MBProgress (1): 2.9/5.9 MBProgress (1): 2.9/5.9 MBProgress (1): 2.9/5.9 MBProgress (1): 2.9/5.9 MBProgress (1): 2.9/5.9 MBProgress (1): 2.9/5.9 MBProgress (1): 2.9/5.9 MBProgress (1): 2.9/5.9 MBProgress (1): 3.0/5.9 MBProgress (1): 3.0/5.9 MBProgress (1): 3.0/5.9 MBProgress (1): 3.0/5.9 MBProgress (1): 3.0/5.9 MBProgress (1): 3.0/5.9 MBProgress (1): 3.0/5.9 MBProgress (1): 3.0/5.9 MBProgress (1): 3.0/5.9 MBProgress (1): 3.0/5.9 MBProgress (1): 3.0/5.9 MBProgress (1): 3.0/5.9 MBProgress (1): 3.0/5.9 MBProgress (1): 3.1/5.9 MBProgress (1): 3.1/5.9 MBProgress (1): 3.1/5.9 MBProgress (1): 3.1/5.9 MBProgress (1): 3.1/5.9 MBProgress (1): 3.1/5.9 MBProgress (1): 3.1/5.9 MBProgress (1): 3.1/5.9 MBProgress (1): 3.1/5.9 MBProgress (1): 3.1/5.9 MBProgress (1): 3.2/5.9 MBProgress (1): 3.2/5.9 MBProgress (1): 3.2/5.9 MBProgress (1): 3.2/5.9 MBProgress (1): 3.2/5.9 MBProgress (1): 3.2/5.9 MBProgress (1): 3.2/5.9 MBProgress (1): 3.2/5.9 MBProgress (1): 3.2/5.9 MBProgress (1): 3.2/5.9 MBProgress (1): 3.3/5.9 MBProgress (1): 3.3/5.9 MBProgress (1): 3.3/5.9 MBProgress (1): 3.3/5.9 MBProgress (1): 3.3/5.9 MBProgress (1): 3.3/5.9 MBProgress (1): 3.4/5.9 MBProgress (1): 3.4/5.9 MBProgress (1): 3.4/5.9 MBProgress (1): 3.4/5.9 MBProgress (1): 3.4/5.9 MBProgress (1): 3.4/5.9 MBProgress (1): 3.5/5.9 MBProgress (1): 3.5/5.9 MBProgress (1): 3.5/5.9 MBProgress (1): 3.5/5.9 MBProgress (1): 3.5/5.9 MBProgress (1): 3.5/5.9 MBProgress (1): 3.5/5.9 MBProgress (1): 3.6/5.9 MBProgress (1): 3.6/5.9 MBProgress (1): 3.6/5.9 MBProgress (1): 3.6/5.9 MBProgress (1): 3.6/5.9 MBProgress (1): 3.6/5.9 MBProgress (1): 3.6/5.9 MBProgress (1): 3.6/5.9 MBProgress (1): 3.7/5.9 MBProgress (1): 3.7/5.9 MBProgress (1): 3.7/5.9 MBProgress (1): 3.7/5.9 MBProgress (1): 3.7/5.9 MBProgress (1): 3.7/5.9 MBProgress (1): 3.7/5.9 MBProgress (1): 3.7/5.9 MBProgress (1): 3.7/5.9 MBProgress (1): 3.7/5.9 MBProgress (1): 3.7/5.9 MBProgress (1): 3.7/5.9 MBProgress (1): 3.7/5.9 MBProgress (1): 3.7/5.9 MBProgress (1): 3.8/5.9 MBProgress (1): 3.8/5.9 MBProgress (1): 3.8/5.9 MBProgress (1): 3.8/5.9 MBProgress (1): 3.8/5.9 MBProgress (1): 3.8/5.9 MBProgress (1): 3.8/5.9 MBProgress (1): 3.8/5.9 MBProgress (1): 3.8/5.9 MBProgress (1): 3.8/5.9 MBProgress (1): 3.9/5.9 MBProgress (1): 3.9/5.9 MBProgress (1): 3.9/5.9 MBProgress (1): 3.9/5.9 MBProgress (1): 3.9/5.9 MBProgress (1): 3.9/5.9 MBProgress (1): 3.9/5.9 MBProgress (1): 3.9/5.9 MBProgress (1): 3.9/5.9 MBProgress (1): 3.9/5.9 MBProgress (1): 4.0/5.9 MBProgress (1): 4.0/5.9 MBProgress (1): 4.0/5.9 MBProgress (1): 4.0/5.9 MBProgress (1): 4.0/5.9 MBProgress (1): 4.0/5.9 MBProgress (1): 4.0/5.9 MBProgress (1): 4.0/5.9 MBProgress (1): 4.0/5.9 MBProgress (1): 4.1/5.9 MBProgress (1): 4.1/5.9 MBProgress (1): 4.1/5.9 MBProgress (1): 4.1/5.9 MBProgress (1): 4.1/5.9 MBProgress (1): 4.1/5.9 MBProgress (1): 4.1/5.9 MBProgress (1): 4.1/5.9 MBProgress (1): 4.1/5.9 MBProgress (1): 4.2/5.9 MBProgress (1): 4.2/5.9 MBProgress (1): 4.2/5.9 MBProgress (1): 4.2/5.9 MBProgress (1): 4.2/5.9 MBProgress (1): 4.2/5.9 MBProgress (1): 4.3/5.9 MBProgress (1): 4.3/5.9 MBProgress (1): 4.3/5.9 MBProgress (1): 4.3/5.9 MBProgress (1): 4.3/5.9 MBProgress (1): 4.3/5.9 MBProgress (1): 4.4/5.9 MBProgress (1): 4.4/5.9 MBProgress (1): 4.4/5.9 MBProgress (1): 4.4/5.9 MBProgress (1): 4.4/5.9 MBProgress (1): 4.4/5.9 MBProgress (1): 4.5/5.9 MBProgress (1): 4.5/5.9 MBProgress (1): 4.5/5.9 MBProgress (1): 4.5/5.9 MBProgress (1): 4.5/5.9 MBProgress (1): 4.5/5.9 MBProgress (1): 4.6/5.9 MBProgress (1): 4.6/5.9 MBProgress (1): 4.6/5.9 MBProgress (1): 4.6/5.9 MBProgress (1): 4.6/5.9 MBProgress (1): 4.6/5.9 MBProgress (1): 4.6/5.9 MBProgress (1): 4.7/5.9 MBProgress (1): 4.7/5.9 MBProgress (1): 4.7/5.9 MBProgress (1): 4.7/5.9 MBProgress (1): 4.7/5.9 MBProgress (1): 4.7/5.9 MBProgress (1): 4.8/5.9 MBProgress (1): 4.8/5.9 MBProgress (1): 4.8/5.9 MBProgress (1): 4.8/5.9 MBProgress (1): 4.8/5.9 MBProgress (1): 4.8/5.9 MBProgress (1): 4.9/5.9 MBProgress (1): 4.9/5.9 MBProgress (1): 4.9/5.9 MBProgress (1): 4.9/5.9 MBProgress (1): 4.9/5.9 MBProgress (1): 4.9/5.9 MBProgress (1): 5.0/5.9 MBProgress (1): 5.0/5.9 MBProgress (1): 5.0/5.9 MBProgress (1): 5.0/5.9 MBProgress (1): 5.0/5.9 MBProgress (1): 5.0/5.9 MBProgress (1): 5.1/5.9 MBProgress (1): 5.1/5.9 MBProgress (1): 5.1/5.9 MBProgress (1): 5.1/5.9 MBProgress (1): 5.1/5.9 MBProgress (1): 5.1/5.9 MBProgress (1): 5.2/5.9 MBProgress (1): 5.2/5.9 MBProgress (1): 5.2/5.9 MBProgress (1): 5.2/5.9 MBProgress (1): 5.2/5.9 MBProgress (1): 5.2/5.9 MBProgress (1): 5.3/5.9 MBProgress (1): 5.3/5.9 MBProgress (1): 5.3/5.9 MBProgress (1): 5.3/5.9 MBProgress (1): 5.3/5.9 MBProgress (1): 5.3/5.9 MBProgress (1): 5.4/5.9 MBProgress (1): 5.4/5.9 MBProgress (1): 5.4/5.9 MBProgress (1): 5.4/5.9 MBProgress (1): 5.4/5.9 MBProgress (1): 5.4/5.9 MBProgress (1): 5.5/5.9 MBProgress (1): 5.5/5.9 MBProgress (1): 5.5/5.9 MBProgress (1): 5.5/5.9 MBProgress (1): 5.5/5.9 MBProgress (1): 5.5/5.9 MBProgress (1): 5.5/5.9 MBProgress (1): 5.6/5.9 MBProgress (1): 5.6/5.9 MBProgress (1): 5.6/5.9 MBProgress (1): 5.6/5.9 MBProgress (1): 5.6/5.9 MBProgress (1): 5.6/5.9 MBProgress (1): 5.7/5.9 MBProgress (1): 5.7/5.9 MBProgress (1): 5.7/5.9 MBProgress (1): 5.7/5.9 MBProgress (1): 5.7/5.9 MBProgress (1): 5.7/5.9 MBProgress (1): 5.8/5.9 MBProgress (1): 5.8/5.9 MBProgress (1): 5.8/5.9 MBProgress (1): 5.8/5.9 MBProgress (1): 5.8/5.9 MBProgress (1): 5.8/5.9 MBProgress (1): 5.9/5.9 MBProgress (1): 5.9/5.9 MBProgress (1): 5.9/5.9 MBProgress (1): 5.9/5.9 MBProgress (1): 5.9 MB                        Downloaded from maven-atlassian-com: https://packages.atlassian.com/maven/repository/internal/com/github/luben/zstd-jni/1.5.5-5/zstd-jni-1.5.5-5.jar (5.9 MB at 5.8 MB/s)
+[INFO] io.reflectoring:plain-external-service:jar:0.0.1-SNAPSHOT
+[INFO] +- org.springframework.boot:spring-boot-starter:jar:3.2.2:compile
+[INFO] |  +- org.springframework.boot:spring-boot:jar:3.2.2:compile
+[INFO] |  +- org.springframework.boot:spring-boot-autoconfigure:jar:3.2.2:compile
+[INFO] |  +- org.springframework.boot:spring-boot-starter-logging:jar:3.2.2:compile
+[INFO] |  |  +- ch.qos.logback:logback-classic:jar:1.4.14:compile
+[INFO] |  |  +- org.apache.logging.log4j:log4j-to-slf4j:jar:2.21.1:compile
+[INFO] |  |  |  \- org.apache.logging.log4j:log4j-api:jar:2.21.1:compile
+[INFO] |  |  \- org.slf4j:jul-to-slf4j:jar:2.0.11:compile
+[INFO] |  +- jakarta.annotation:jakarta.annotation-api:jar:2.1.1:compile
+[INFO] |  +- org.springframework:spring-core:jar:6.1.3:compile
+[INFO] |  |  \- org.springframework:spring-jcl:jar:6.1.3:compile
+[INFO] |  \- org.yaml:snakeyaml:jar:2.2:compile
+[INFO] +- org.springframework.kafka:spring-kafka:jar:3.1.1:compile
+[INFO] |  +- org.springframework:spring-context:jar:6.1.3:compile
+[INFO] |  |  +- org.springframework:spring-aop:jar:6.1.3:compile
+[INFO] |  |  +- org.springframework:spring-beans:jar:6.1.3:compile
+[INFO] |  |  \- org.springframework:spring-expression:jar:6.1.3:compile
+[INFO] |  +- org.springframework:spring-messaging:jar:6.1.3:compile
+[INFO] |  +- org.springframework:spring-tx:jar:6.1.3:compile
+[INFO] |  +- org.springframework.retry:spring-retry:jar:2.0.5:compile
+[INFO] |  +- org.apache.kafka:kafka-clients:jar:3.6.1:compile
+[INFO] |  |  +- com.github.luben:zstd-jni:jar:1.5.5-1:runtime
+[INFO] |  |  +- org.lz4:lz4-java:jar:1.8.0:runtime
+[INFO] |  |  +- org.xerial.snappy:snappy-java:jar:1.1.10.5:runtime
+[INFO] |  |  \- org.slf4j:slf4j-api:jar:2.0.11:compile
+[INFO] |  +- io.micrometer:micrometer-observation:jar:1.12.2:compile
+[INFO] |  |  \- io.micrometer:micrometer-commons:jar:1.12.2:compile
+[INFO] |  \- com.google.code.findbugs:jsr305:jar:3.0.2:runtime
+[INFO] +- org.springframework.boot:spring-boot-starter-test:jar:3.2.2:test
+[INFO] |  +- org.springframework.boot:spring-boot-test:jar:3.2.2:test
+[INFO] |  +- org.springframework.boot:spring-boot-test-autoconfigure:jar:3.2.2:test
+[INFO] |  +- com.jayway.jsonpath:json-path:jar:2.8.0:test
+[INFO] |  +- jakarta.xml.bind:jakarta.xml.bind-api:jar:4.0.1:test
+[INFO] |  |  \- jakarta.activation:jakarta.activation-api:jar:2.1.2:test
+[INFO] |  +- net.minidev:json-smart:jar:2.5.0:test
+[INFO] |  |  \- net.minidev:accessors-smart:jar:2.5.0:test
+[INFO] |  |     \- org.ow2.asm:asm:jar:9.3:test
+[INFO] |  +- org.assertj:assertj-core:jar:3.24.2:test
+[INFO] |  |  \- net.bytebuddy:byte-buddy:jar:1.14.11:test
+[INFO] |  +- org.awaitility:awaitility:jar:4.2.0:test
+[INFO] |  +- org.hamcrest:hamcrest:jar:2.2:test
+[INFO] |  +- org.junit.jupiter:junit-jupiter:jar:5.10.1:test
+[INFO] |  |  +- org.junit.jupiter:junit-jupiter-params:jar:5.10.1:test
+[INFO] |  |  \- org.junit.jupiter:junit-jupiter-engine:jar:5.10.1:test
+[INFO] |  +- org.mockito:mockito-core:jar:5.7.0:test
+[INFO] |  |  +- net.bytebuddy:byte-buddy-agent:jar:1.14.11:test
+[INFO] |  |  \- org.objenesis:objenesis:jar:3.3:test
+[INFO] |  +- org.mockito:mockito-junit-jupiter:jar:5.7.0:test
+[INFO] |  +- org.skyscreamer:jsonassert:jar:1.5.1:test
+[INFO] |  |  \- com.vaadin.external.google:android-json:jar:0.0.20131108.vaadin1:test
+[INFO] |  +- org.springframework:spring-test:jar:6.1.3:test
+[INFO] |  \- org.xmlunit:xmlunit-core:jar:2.9.1:test
+[INFO] +- org.springframework.kafka:spring-kafka-test:jar:3.1.1:test
+[INFO] |  +- org.apache.zookeeper:zookeeper:jar:3.8.3:test
+[INFO] |  |  +- org.apache.zookeeper:zookeeper-jute:jar:3.8.3:test
+[INFO] |  |  +- org.apache.yetus:audience-annotations:jar:0.12.0:test
+[INFO] |  |  +- io.netty:netty-handler:jar:4.1.105.Final:test
+[INFO] |  |  |  +- io.netty:netty-common:jar:4.1.105.Final:test
+[INFO] |  |  |  +- io.netty:netty-resolver:jar:4.1.105.Final:test
+[INFO] |  |  |  +- io.netty:netty-buffer:jar:4.1.105.Final:test
+[INFO] |  |  |  +- io.netty:netty-transport:jar:4.1.105.Final:test
+[INFO] |  |  |  +- io.netty:netty-transport-native-unix-common:jar:4.1.105.Final:test
+[INFO] |  |  |  \- io.netty:netty-codec:jar:4.1.105.Final:test
+[INFO] |  |  +- io.netty:netty-transport-native-epoll:jar:4.1.105.Final:test
+[INFO] |  |  |  \- io.netty:netty-transport-classes-epoll:jar:4.1.105.Final:test
+[INFO] |  |  +- ch.qos.logback:logback-core:jar:1.4.14:compile
+[INFO] |  |  \- commons-io:commons-io:jar:2.11.0:test
+[INFO] |  +- org.apache.kafka:kafka-clients:jar:test:3.6.1:test
+[INFO] |  +- org.apache.kafka:kafka-metadata:jar:3.6.1:test
+[INFO] |  |  +- org.apache.kafka:kafka-raft:jar:3.6.1:test
+[INFO] |  |  +- com.fasterxml.jackson.datatype:jackson-datatype-jdk8:jar:2.15.3:test
+[INFO] |  |  \- com.yammer.metrics:metrics-core:jar:2.2.0:test
+[INFO] |  +- org.apache.kafka:kafka-server-common:jar:3.6.1:test
+[INFO] |  |  +- net.sf.jopt-simple:jopt-simple:jar:5.0.4:test
+[INFO] |  |  \- org.pcollections:pcollections:jar:4.0.1:test
+[INFO] |  +- org.apache.kafka:kafka-server-common:jar:test:3.6.1:test
+[INFO] |  +- org.apache.kafka:kafka-streams-test-utils:jar:3.6.1:test
+[INFO] |  |  \- org.apache.kafka:kafka-streams:jar:3.6.1:test
+[INFO] |  |     \- org.rocksdb:rocksdbjni:jar:7.9.2:test
+[INFO] |  +- org.apache.kafka:kafka_2.13:jar:3.6.1:test
+[INFO] |  |  +- org.scala-lang:scala-library:jar:2.13.11:test
+[INFO] |  |  +- org.apache.kafka:kafka-group-coordinator:jar:3.6.1:test
+[INFO] |  |  +- org.apache.kafka:kafka-storage-api:jar:3.6.1:test
+[INFO] |  |  +- org.apache.kafka:kafka-tools-api:jar:3.6.1:test
+[INFO] |  |  +- org.apache.kafka:kafka-storage:jar:3.6.1:test
+[INFO] |  |  |  \- com.github.ben-manes.caffeine:caffeine:jar:3.1.8:test
+[INFO] |  |  |     +- org.checkerframework:checker-qual:jar:3.37.0:test
+[INFO] |  |  |     \- com.google.errorprone:error_prone_annotations:jar:2.21.1:test
+[INFO] |  |  +- net.sourceforge.argparse4j:argparse4j:jar:0.7.0:test
+[INFO] |  |  +- commons-validator:commons-validator:jar:1.7:test
+[INFO] |  |  |  +- commons-beanutils:commons-beanutils:jar:1.9.4:test
+[INFO] |  |  |  +- commons-digester:commons-digester:jar:2.1:test
+[INFO] |  |  |  \- commons-collections:commons-collections:jar:3.2.2:test
+[INFO] |  |  +- com.fasterxml.jackson.module:jackson-module-scala_2.13:jar:2.15.3:test
+[INFO] |  |  |  \- com.thoughtworks.paranamer:paranamer:jar:2.8:test
+[INFO] |  |  +- com.fasterxml.jackson.dataformat:jackson-dataformat-csv:jar:2.15.3:test
+[INFO] |  |  +- org.bitbucket.b_c:jose4j:jar:0.9.3:test
+[INFO] |  |  +- org.scala-lang.modules:scala-collection-compat_2.13:jar:2.10.0:test
+[INFO] |  |  +- org.scala-lang.modules:scala-java8-compat_2.13:jar:1.0.2:test
+[INFO] |  |  +- org.scala-lang:scala-reflect:jar:2.13.11:test
+[INFO] |  |  +- com.typesafe.scala-logging:scala-logging_2.13:jar:3.9.4:test
+[INFO] |  |  +- io.dropwizard.metrics:metrics-core:jar:4.2.23:test
+[INFO] |  |  \- commons-cli:commons-cli:jar:1.4:test
+[INFO] |  +- org.apache.kafka:kafka_2.13:jar:test:3.6.1:test
+[INFO] |  +- org.junit.jupiter:junit-jupiter-api:jar:5.10.1:test
+[INFO] |  |  +- org.opentest4j:opentest4j:jar:1.3.0:test
+[INFO] |  |  +- org.junit.platform:junit-platform-commons:jar:1.10.1:test
+[INFO] |  |  \- org.apiguardian:apiguardian-api:jar:1.1.2:test
+[INFO] |  \- org.junit.platform:junit-platform-launcher:jar:1.10.1:test
+[INFO] |     \- org.junit.platform:junit-platform-engine:jar:1.10.1:test
+[INFO] +- io.cloudevents:cloudevents-kafka:jar:2.4.1:compile
+[INFO] |  \- io.cloudevents:cloudevents-core:jar:2.4.1:compile
+[INFO] |     \- io.cloudevents:cloudevents-api:jar:2.4.1:compile
+[INFO] \- io.cloudevents:cloudevents-json-jackson:jar:2.4.1:compile
+[INFO]    +- com.fasterxml.jackson.core:jackson-core:jar:2.15.3:compile
+[INFO]    \- com.fasterxml.jackson.core:jackson-databind:jar:2.15.3:compile
+[INFO]       \- com.fasterxml.jackson.core:jackson-annotations:jar:2.15.3:compile
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  26.504 s
+[INFO] Finished at: 2024-02-10T14:40:20+11:00
+[INFO] ------------------------------------------------------------------------

@@ -1,0 +1,14 @@
+/Users/thombergs/projects/kalix-sandbox/external-service/plain-external-service/src/main/java/io/reflectoring/plainexternalservice/KafkaConfiguration.java
+/Users/thombergs/projects/kalix-sandbox/external-service/plain-external-service/src/main/java/io/reflectoring/plainexternalservice/model/TransferId.java
+/Users/thombergs/projects/kalix-sandbox/external-service/plain-external-service/src/main/java/io/reflectoring/plainexternalservice/model/AccountDebitedEvent.java
+/Users/thombergs/projects/kalix-sandbox/external-service/plain-external-service/src/main/java/io/reflectoring/plainexternalservice/model/AccountId.java
+/Users/thombergs/projects/kalix-sandbox/external-service/plain-external-service/src/main/java/io/reflectoring/plainexternalservice/model/AccountCreditedEvent.java
+/Users/thombergs/projects/kalix-sandbox/external-service/plain-external-service/src/main/java/io/reflectoring/plainexternalservice/model/Money.java
+/Users/thombergs/projects/kalix-sandbox/external-service/plain-external-service/src/main/java/io/reflectoring/plainexternalservice/ExternalServiceApplication.java
+/Users/thombergs/projects/kalix-sandbox/external-service/plain-external-service/src/main/java/io/reflectoring/plainexternalservice/Topics.java
+/Users/thombergs/projects/kalix-sandbox/external-service/plain-external-service/src/main/java/io/reflectoring/plainexternalservice/model/Currency.java
+/Users/thombergs/projects/kalix-sandbox/external-service/plain-external-service/src/main/java/io/reflectoring/plainexternalservice/model/RequestAccountDebitEvent.java
+/Users/thombergs/projects/kalix-sandbox/external-service/plain-external-service/src/main/java/io/reflectoring/plainexternalservice/IncomingEventsListener.java
+/Users/thombergs/projects/kalix-sandbox/external-service/plain-external-service/src/main/java/io/reflectoring/plainexternalservice/model/FraudCheckedEvent.java
+/Users/thombergs/projects/kalix-sandbox/external-service/plain-external-service/src/main/java/io/reflectoring/plainexternalservice/model/RequestAccountCreditEvent.java
+/Users/thombergs/projects/kalix-sandbox/external-service/plain-external-service/src/main/java/io/reflectoring/plainexternalservice/model/RequestFraudCheckEvent.java

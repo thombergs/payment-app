@@ -1,0 +1,17 @@
+io/reflectoring/plainexternalservice/model/AccountCreditedEvent.class
+io/reflectoring/plainexternalservice/model/FraudCheckedEvent$FraudCheckResult.class
+io/reflectoring/plainexternalservice/model/AccountId.class
+io/reflectoring/plainexternalservice/model/Money.class
+io/reflectoring/plainexternalservice/model/FraudCheckedEvent.class
+io/reflectoring/plainexternalservice/model/AccountCreditedEvent$CreditResult.class
+io/reflectoring/plainexternalservice/ExternalServiceApplication.class
+io/reflectoring/plainexternalservice/model/RequestAccountCreditEvent.class
+io/reflectoring/plainexternalservice/KafkaConfiguration.class
+io/reflectoring/plainexternalservice/model/RequestFraudCheckEvent.class
+io/reflectoring/plainexternalservice/model/RequestAccountDebitEvent.class
+io/reflectoring/plainexternalservice/model/Currency.class
+io/reflectoring/plainexternalservice/model/AccountDebitedEvent$DebitResult.class
+io/reflectoring/plainexternalservice/model/TransferId.class
+io/reflectoring/plainexternalservice/IncomingEventsListener.class
+io/reflectoring/plainexternalservice/model/AccountDebitedEvent.class
+io/reflectoring/plainexternalservice/Topics.class

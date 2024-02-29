@@ -7,6 +7,8 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/transfer-service/plain-transfer-service/pom.xml" />
         <option value="$PROJECT_DIR$/transfer-service/kalix-transfer-service/pom.xml" />
+        <option value="$PROJECT_DIR$/external-service/plain-external-service/pom.xml" />
+        <option value="$PROJECT_DIR$/external-service/kalix-external-service/pom.xml" />
       </list>
     </option>
     <option name="workspaceImportForciblyTurnedOn" value="true" />

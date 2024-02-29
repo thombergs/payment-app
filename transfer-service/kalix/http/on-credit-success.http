@@ -1,0 +1,19 @@
+POST http://localhost:9000/transfer/12345/on-target-account-credited
+Accept: application/json
+Content-Type: application/json
+
+{
+  "transferId": {
+    "uuid": "12345"
+  },
+  "targetAccountId": {
+    "uuid": "456"
+  },
+  "amount": {
+    "amountInCents": 9999,
+    "currency": "USD"
+  },
+  "result": "SUCCESS"
+}
+
+###

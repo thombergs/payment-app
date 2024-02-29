@@ -1,0 +1,12 @@
+POST http://localhost:9000/transfer/12345/on-fraud-checked
+Accept: application/json
+Content-Type: application/json
+
+{
+  "transferId": {
+    "uuid": "12345"
+  },
+  "result": "SUCCESS"
+}
+
+###
