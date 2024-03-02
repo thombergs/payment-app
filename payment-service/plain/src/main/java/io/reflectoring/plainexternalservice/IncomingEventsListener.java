@@ -1,20 +1,19 @@
 package io.reflectoring.plainexternalservice;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.cloudevents.CloudEvent;
-import io.cloudevents.core.v1.CloudEventBuilder;
 import io.reflectoring.plainexternalservice.model.FraudCheckedEvent;
 import io.reflectoring.plainexternalservice.model.RequestFraudCheckEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.messaging.Message;
+import org.springframework.messaging.MessageHeaders;
+import org.springframework.messaging.support.GenericMessage;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
-import java.net.URI;
-import java.util.UUID;
+import java.util.Map;
 
 @Component
 public class IncomingEventsListener {
@@ -48,7 +47,12 @@ public class IncomingEventsListener {
 //                .withDataContentType("application/octet-stream")
 //                .build();
 
-        kafkaTemplate.send(Topics.FRAUD_CHECKED, objectMapper.writeValueAsBytes(outgoingEvent))
+        Message<byte[]> message = new GenericMessage<byte[]>(objectMapper.writeValueAsBytes(outgoingEvent), new MessageHeaders(
+                Map.of("Content-Type", "application/octet-stream",
+                        "kafka_topic", Topics.FRAUD_CHECKED)
+        ));
+
+        kafkaTemplate.send(message)
                 .thenRun(() -> logger.info("published event {}", outgoingEvent));
     }
 
