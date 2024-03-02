@@ -12,6 +12,7 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
 import java.net.URI;
 import java.util.UUID;
 
@@ -20,17 +21,17 @@ public class IncomingEventsListener {
 
     private static final Logger logger = LoggerFactory.getLogger(IncomingEventsListener.class);
 
-    private final KafkaTemplate<String, CloudEvent> kafkaTemplate;
+    private final KafkaTemplate<String, byte[]> kafkaTemplate;
     private final ObjectMapper objectMapper;
 
     public IncomingEventsListener(
-            KafkaTemplate<String, CloudEvent> kafkaTemplate) {
+            KafkaTemplate<String, byte[]> kafkaTemplate) {
         this.kafkaTemplate = kafkaTemplate;
         this.objectMapper = new ObjectMapper();
     }
 
     @KafkaListener(id = "requestFraudCheckEventListener", topics = Topics.REQUEST_FRAUD_CHECK_EVENT)
-    public void onRequestFraudCheckEvent(String eventString) throws JsonProcessingException {
+    public void onRequestFraudCheckEvent(String eventString) throws IOException {
         RequestFraudCheckEvent incomingEvent = objectMapper.readValue(eventString, RequestFraudCheckEvent.class);
         logger.info("received event {}", incomingEvent);
 
@@ -39,15 +40,15 @@ public class IncomingEventsListener {
                 FraudCheckedEvent.FraudCheckResult.SUCCESS);
 
 
-        CloudEvent cloudEvent = new CloudEventBuilder()
-                .withId(UUID.randomUUID().toString())
-                .withSource(URI.create("fraud-check-service"))
-                .withType(FraudCheckedEvent.class.getSimpleName())
-                .withData(objectMapper.writeValueAsBytes(outgoingEvent))
-                .withDataContentType("application/json")
-                .build();
+//        CloudEvent cloudEvent = new CloudEventBuilder()
+//                .withId(UUID.randomUUID().toString())
+//                .withSource(URI.create("fraud-check-service"))
+//                .withType(FraudCheckedEvent.class.getSimpleName())
+//                .withData(objectMapper.writeValueAsBytes(outgoingEvent))
+//                .withDataContentType("application/octet-stream")
+//                .build();
 
-        kafkaTemplate.send(Topics.FRAUD_CHECKED, cloudEvent)
+        kafkaTemplate.send(Topics.FRAUD_CHECKED, objectMapper.writeValueAsBytes(outgoingEvent))
                 .thenRun(() -> logger.info("published event {}", outgoingEvent));
     }
 

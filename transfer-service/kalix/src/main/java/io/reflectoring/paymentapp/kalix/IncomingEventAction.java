@@ -3,11 +3,14 @@ package io.reflectoring.paymentapp.kalix;
 import io.reflectoring.paymentapp.transfer.internal.incoming.api.AccountCreditedEvent;
 import io.reflectoring.paymentapp.transfer.internal.incoming.api.AccountDebitedEvent;
 import io.reflectoring.paymentapp.transfer.internal.incoming.api.FraudCheckedEvent;
+import kalix.javasdk.JsonSupport;
 import kalix.javasdk.action.Action;
 import kalix.javasdk.annotations.Subscribe;
 import kalix.javasdk.client.ComponentClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
 
 public class IncomingEventAction extends Action {
 
@@ -21,8 +24,10 @@ public class IncomingEventAction extends Action {
     }
 
     @Subscribe.Topic(Topics.FRAUD_CHECKED)
-    public Effect<String> onFraudCheckedEvent(FraudCheckedEvent event) {
-        logger.info("received event {} via topic", event);
+    public Effect<String> onFraudCheckedEvent(byte[] eventBytes) throws IOException {
+        logger.info("received event via topic {}", Topics.FRAUD_CHECKED);
+        FraudCheckedEvent event = JsonSupport.getObjectMapper()
+                .readValue(eventBytes, FraudCheckedEvent.class);
         componentClient.forWorkflow("transfer")
                 .call(TransferWorkflow::onFraudChecked)
                 .params(event);
