@@ -1,5 +1,0 @@
-GET http://localhost:9000/transfer/12345/status
-Accept: application/json
-
-
-###

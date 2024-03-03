@@ -12,9 +12,9 @@ import org.springframework.scheduling.annotation.EnableAsync;
 // Documentation at https://docs.kalix.io/services/using-acls.html
 @Acl(allow = @Acl.Matcher(principal = Acl.Principal.INTERNET))
 @EnableAsync
-public class ExternalApplication {
+public class PaymentApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ExternalApplication.class, args);
+        SpringApplication.run(PaymentApplication.class, args);
     }
 }

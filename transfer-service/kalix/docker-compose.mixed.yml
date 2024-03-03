@@ -1,3 +1,4 @@
+# use this file to run the Kalix transfer service locally with the non-Kalix payment service
 version: "3"
 services:
 
