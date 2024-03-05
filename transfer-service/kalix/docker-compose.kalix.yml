@@ -5,7 +5,7 @@ services:
 
   kalix-runtime-transfer-service:
     image: gcr.io/kalix-public/kalix-runtime:1.1.31
-    container_name: kalix-runtime-transfer-service
+    container_name: transfer-service
     ports:
       - "9000:9000"
     extra_hosts:
@@ -13,6 +13,6 @@ services:
     environment:
       PERSISTENCE_ENABLED: "false" #when true uncomment volumes above
       JAVA_TOOL_OPTIONS: >
-        -Dkalix.dev-mode.service-port-mappings.kalix-payment-service=host.docker.internal:9001
+        -Dkalix.dev-mode.service-port-mappings.payment-service=host.docker.internal:9001
       USER_SERVICE_HOST: ${USER_SERVICE_HOST:-host.docker.internal}
       USER_SERVICE_PORT: ${USER_SERVICE_PORT:-8080}
