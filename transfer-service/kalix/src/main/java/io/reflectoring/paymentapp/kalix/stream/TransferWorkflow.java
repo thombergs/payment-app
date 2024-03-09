@@ -1,5 +1,6 @@
-package io.reflectoring.paymentapp.kalix;
+package io.reflectoring.paymentapp.kalix.stream;
 
+import io.reflectoring.paymentapp.kalix.Message;
 import io.reflectoring.paymentapp.transfer.api.AccountId;
 import io.reflectoring.paymentapp.transfer.api.Currency;
 import io.reflectoring.paymentapp.transfer.api.Money;
@@ -137,7 +138,7 @@ public class TransferWorkflow extends Workflow<TransferState> {
                 .call(TransferState.class, transferState -> {
                     logger.info("executing step 'fraudCheck'");
                     return componentClient.forAction()
-                            .call(OutgoingEventAction::requestFraudCheck)
+                            .call(OutgoingEventsToStreamAction::requestFraudCheck)
                             .params(new RequestFraudCheckEvent(
                                     transferState.id(),
                                     transferState.sourceAccountId(),
@@ -154,7 +155,7 @@ public class TransferWorkflow extends Workflow<TransferState> {
         Step debitAccount = step("debitSourceAccount")
                 .call(TransferState.class, transferState ->
                         componentClient.forAction()
-                                .call(OutgoingEventAction::requestAccountDebit)
+                                .call(OutgoingEventsToStreamAction::requestAccountDebit)
                                 .params(new RequestAccountDebitEvent(
                                         transferState.id(),
                                         transferState.sourceAccountId(),
@@ -170,7 +171,7 @@ public class TransferWorkflow extends Workflow<TransferState> {
         Step creditAccount = step("creditTargetAccount")
                 .call(TransferState.class, transferState ->
                         componentClient.forAction()
-                                .call(OutgoingEventAction::requestAccountCredit)
+                                .call(OutgoingEventsToStreamAction::requestAccountCredit)
                                 .params(new RequestAccountCreditEvent(
                                         transferState.id(),
                                         transferState.targetAccountId(),

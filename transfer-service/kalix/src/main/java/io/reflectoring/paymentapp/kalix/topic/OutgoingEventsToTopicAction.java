@@ -1,5 +1,6 @@
-package io.reflectoring.paymentapp.kalix;
+package io.reflectoring.paymentapp.kalix.topic;
 
+import io.reflectoring.paymentapp.kalix.Topics;
 import io.reflectoring.paymentapp.transfer.internal.outgoing.api.RequestAccountCreditEvent;
 import io.reflectoring.paymentapp.transfer.internal.outgoing.api.RequestAccountDebitEvent;
 import io.reflectoring.paymentapp.transfer.internal.outgoing.api.RequestFraudCheckEvent;
@@ -12,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @RequestMapping("/outgoing")
-public class OutgoingEventAction extends Action {
+public class OutgoingEventsToTopicAction extends Action {
 
-    private static final Logger logger = LoggerFactory.getLogger(OutgoingEventAction.class);
+    private static final Logger logger = LoggerFactory.getLogger(OutgoingEventsToTopicAction.class);
 
     @Publish.Topic(Topics.REQUEST_FRAUD_CHECK)
     @PostMapping("/request-fraud-check")

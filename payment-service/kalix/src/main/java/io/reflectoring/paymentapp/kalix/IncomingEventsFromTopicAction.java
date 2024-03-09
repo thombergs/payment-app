@@ -12,9 +12,9 @@ import kalix.javasdk.annotations.Subscribe;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class IncomingEventAction extends Action {
+public class IncomingEventsFromTopicAction extends Action {
 
-    private static final Logger logger = LoggerFactory.getLogger(IncomingEventAction.class);
+    private static final Logger logger = LoggerFactory.getLogger(IncomingEventsFromTopicAction.class);
 
     @Subscribe.Topic(Topics.REQUEST_FRAUD_CHECK)
     @Publish.Topic(Topics.FRAUD_CHECKED)
