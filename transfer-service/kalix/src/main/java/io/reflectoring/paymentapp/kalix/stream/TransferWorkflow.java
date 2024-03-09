@@ -29,6 +29,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Locale;
 
+/**
+ * This class is removed by the build process when run with the profile "-P topic".
+ */
 @TypeId("transfer")
 @Id("id")
 @RequestMapping("/transfer/{id}")

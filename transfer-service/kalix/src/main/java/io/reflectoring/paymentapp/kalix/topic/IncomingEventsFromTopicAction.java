@@ -13,6 +13,9 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
+/**
+ * This class is removed by the build process when run with the profile "-P stream".
+ */
 public class IncomingEventsFromTopicAction extends Action {
 
     private static final Logger logger = LoggerFactory.getLogger(IncomingEventsFromTopicAction.class);

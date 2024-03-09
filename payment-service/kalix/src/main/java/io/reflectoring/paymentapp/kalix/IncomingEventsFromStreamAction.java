@@ -12,6 +12,9 @@ import kalix.javasdk.annotations.Subscribe;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * This class is removed by the build process when run with the profile "-P topic".
+ */
 @Subscribe.Stream(id = "transfer-events", service = "transfer-service")
 @Publish.Stream(id = "payment-events")
 public class IncomingEventsFromStreamAction extends Action {

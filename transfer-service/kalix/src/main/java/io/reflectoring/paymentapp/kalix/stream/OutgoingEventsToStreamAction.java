@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+/**
+ * This class is removed by the build process when run with the profile "-P topic".
+ */
 @RequestMapping("/outgoing")
 @Publish.Stream(id = "transfer-events")
 public class OutgoingEventsToStreamAction extends Action {

@@ -12,6 +12,9 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
+/**
+ * This class is removed by the build process when run with the profile "-P topic".
+ */
 @Subscribe.Stream(id = "payment-events", service = "payment-service")
 public class IncomingEventsFromStreamAction extends Action {
 

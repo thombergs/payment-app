@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+/**
+ * This class is removed by the build process when run with the profile "-P stream".
+ */
 @RequestMapping("/outgoing")
 public class OutgoingEventsToTopicAction extends Action {
 
