@@ -1,0 +1,19 @@
+{
+  "name": "paymentapp-cdk",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "info": "IMPORTANT NOTE: Please make sure to replace the values inside the cdk.json with your configuration",
+    "bootstrap": "cdk bootstrap --app \"./mvnw -e -q compile exec:java -Dexec.mainClass=io.reflectoring.paymentapp.BootstrapApp\"",
+    "network:deploy": "cdk deploy --app \"./mvnw -e -q compile exec:java -Dexec.mainClass=io.reflectoring.paymentapp.NetworkApp\" --require-approval never",
+    "network:destroy": "cdk destroy --app \"./mvnw -e -q compile exec:java -Dexec.mainClass=io.reflectoring.paymentapp.NetworkApp\" --force --require-approval never",
+    "service:deploy": "cdk deploy --app \"./mvnw -e -q compile exec:java -Dexec.mainClass=io.reflectoring.paymentapp.TransferServiceApp\" --require-approval never --all",
+    "service:destroy": "cdk destroy --app \"./mvnw -e -q compile exec:java -Dexec.mainClass=io.reflectoring.paymentapp.TransferServiceApp\" --force --require-approval never --all"
+  },
+  "devDependencies": {
+    "aws-cdk": "2.33.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
