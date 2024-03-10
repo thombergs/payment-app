@@ -1,10 +1,10 @@
 {
   "context": {
     "environmentName": "staging",
-    "applicationName": "transfer-app",
+    "applicationName": "DYNAMICALLY_OVERRIDDEN_BY_WORKFLOW",
     "accountId": "590183826197",
     "springProfile": "aws",
-    "dockerRepositoryName": "todo-app",
+    "dockerRepositoryName": "DYNAMICALLY_OVERRIDDEN_BY_WORKFLOW",
     "dockerImageTag": "DYNAMICALLY_OVERRIDDEN_BY_WORKFLOW",
     "region": "ap-southeast-2"
   }

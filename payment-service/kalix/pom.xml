@@ -289,6 +289,10 @@
       <version>${kalix-sdk.version}</version>
     </dependency>
     <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
+    <dependency>
       <groupId>io.kalix</groupId>
       <artifactId>kalix-spring-boot-starter-test</artifactId>
       <version>${kalix-sdk.version}</version>

@@ -12,7 +12,7 @@
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>5.9.0</junit.version>
-        <cdk-constructs.version>0.1.11</cdk-constructs.version>
+        <cdk-constructs.version>0.1.15-SNAPSHOT</cdk-constructs.version>
     </properties>
 
     <build>

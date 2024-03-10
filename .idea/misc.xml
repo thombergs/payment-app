@@ -9,6 +9,11 @@
         <option value="$PROJECT_DIR$/transfer-service/kalix-transfer-service/pom.xml" />
         <option value="$PROJECT_DIR$/external-service/plain-external-service/pom.xml" />
         <option value="$PROJECT_DIR$/external-service/kalix-external-service/pom.xml" />
+        <option value="$PROJECT_DIR$/cdk/pom.xml" />
+        <option value="$PROJECT_DIR$/payment-service/kalix/pom.xml" />
+        <option value="$PROJECT_DIR$/payment-service/plain/pom.xml" />
+        <option value="$PROJECT_DIR$/transfer-service/kalix/pom.xml" />
+        <option value="$PROJECT_DIR$/transfer-service/plain/pom.xml" />
       </list>
     </option>
     <option name="workspaceImportForciblyTurnedOn" value="true" />

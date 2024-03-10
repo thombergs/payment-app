@@ -8,14 +8,18 @@ import software.amazon.awscdk.App;
 import software.amazon.awscdk.Environment;
 import software.amazon.awscdk.Stack;
 import software.amazon.awscdk.StackProps;
+import software.amazon.awscdk.services.iam.Effect;
+import software.amazon.awscdk.services.iam.PolicyStatement;
 import software.constructs.Construct;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static java.util.Collections.emptyList;
 
-public class TransferServiceApp {
+public class ServiceApp {
 
     public static void main(final String[] args) {
         App app = new App();
@@ -40,6 +44,10 @@ public class TransferServiceApp {
 
         String region = (String) app.getNode().tryGetContext("region");
         Validations.requireNonEmpty(region, "context variable 'region' must not be null");
+
+        String httpListenerPriorityString = (String) app.getNode().tryGetContext("httpListenerPriority");
+        Validations.requireNonEmpty(httpListenerPriorityString, "context variable 'httpListenerPriority' must not be null");
+        int httpListenerPriority = Integer.valueOf(httpListenerPriorityString);
 
         Environment awsEnvironment = makeEnv(accountId, region);
 
@@ -75,10 +83,33 @@ public class TransferServiceApp {
                                 serviceStack,
                                 springProfile,
                                 environmentName))
-                        // .withTaskRolePolicyStatements() TODO: add policy to access MKS
+                        .withTaskRolePolicyStatements(List.of(
+                                PolicyStatement.Builder.create()
+                                        .sid("AllowMSKAccess")
+                                        .effect(Effect.ALLOW)
+                                        .resources(List.of(
+                                                "arn:aws:kafka:ap-southeast-2:590183826197:cluster/msk-cluster/acdfa467-0419-4f71-8681-ab69d0012438-s2")
+                                        )
+                                        .actions(Arrays.asList(
+                                                "kafka-cluster:Connect",
+                                                "kafka-cluster:AlterCluster",
+                                                "kafka-cluster:DescribeCluster"))
+                                        .build(),
+                                PolicyStatement.Builder.create()
+                                        .sid("AllowTopicAccess")
+                                        .effect(Effect.ALLOW)
+                                        .resources(List.of(
+                                                "arn:aws:kafka:ap-southeast-2:590183826197:cluster/msk-cluster/acdfa467-0419-4f71-8681-ab69d0012438-s2/*")
+                                        )
+                                        .actions(Arrays.asList(
+                                                "kafka-cluster:*Topic*",
+                                                "kafka-cluster:WriteData",
+                                                "kafka-cluster:ReadData"))
+                                        .build()))
                         .withStickySessionsEnabled(true)
                         .withHealthCheckPath("/actuator/health")
                         .withAwsLogsDateTimeFormat("%Y-%m-%dT%H:%M:%S.%f%z")
+                        .withHttpListenerPriority(httpListenerPriority)
                         .withHealthCheckIntervalSeconds(30), // needs to be long enough to allow for slow start up with low-end computing instances
 
                 Network.getOutputParametersFromParameterStore(serviceStack, applicationEnvironment.getEnvironmentName()));

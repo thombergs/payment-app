@@ -7,9 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="kalix-transfer-service (1)" />
-        <module name="paymentapp" />
         <module name="plain-transfer-service" />
         <module name="kalix-transfer-service" />
+        <module name="paymentapp" />
+        <module name="cdk" />
+        <module name="plain-payment-service" />
+        <module name="kalix-payment-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -20,11 +23,13 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="kalix-payment-service" options="-parameters -Xlint:deprecation -parameters" />
       <module name="kalix-sandbox" options="-parameters -Xlint:deprecation -parameters" />
       <module name="kalix-transfer-service" options="-parameters -Xlint:deprecation -parameters" />
       <module name="kalix-transfer-service (1)" options="-parameters -Xlint:deprecation -parameters" />
       <module name="paymentapp" options="-parameters" />
       <module name="plain-external-service" options="-parameters" />
+      <module name="plain-payment-service" options="-parameters" />
       <module name="plain-transfer-service" options="-parameters" />
     </option>
   </component>
