@@ -1,4 +1,4 @@
-GET http://localhost:8080/transfer/12345/status
+GET http://localhost:8080/transfer/12345678902345/status
 Accept: application/json
 
 

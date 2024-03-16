@@ -19,7 +19,7 @@
     <dockerImage>my-docker-repo/${project.artifactId}</dockerImage>
     <dockerTag>${project.version}-${build.timestamp}</dockerTag>
     <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
-    <mainClass>io.reflectoring.paymentapp.TransferApplication</mainClass>
+    <mainClass>io.reflectoring.transferservice.TransferApplication</mainClass>
 
     <jdk.target>17</jdk.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

@@ -1,0 +1,2 @@
+app:
+  kafka-server: boot-i1dbvnnf.c2.kafka-serverless.ap-southeast-2.amazonaws.com:9098

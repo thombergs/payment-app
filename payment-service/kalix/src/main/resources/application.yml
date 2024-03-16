@@ -1,3 +1,6 @@
 logging:
   level:
     kalix: ERROR
+
+app:
+  event-delay: PT5s
