@@ -1,4 +1,4 @@
-package io.reflectoring.paymentservice;
+package io.reflectoring;
 
 import software.amazon.awscdk.App;
 import software.amazon.awscdk.Environment;

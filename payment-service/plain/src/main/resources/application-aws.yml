@@ -1,2 +1,4 @@
+server:
+  port: 8080
 app:
-  kafka-server: boot-i1dbvnnf.c2.kafka-serverless.ap-southeast-2.amazonaws.com:9098
+  kafka-server: boot-wkculh7k.c2.kafka-serverless.ap-southeast-2.amazonaws.com:9098

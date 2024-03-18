@@ -1,4 +1,4 @@
-package io.reflectoring.paymentservice;
+package io.reflectoring;
 
 
 import dev.stratospheric.cdk.ApplicationEnvironment;
@@ -88,7 +88,7 @@ public class ServiceApp {
                                         .sid("AllowMSKAccess")
                                         .effect(Effect.ALLOW)
                                         .resources(List.of(
-                                                "arn:aws:kafka:ap-southeast-2:590183826197:cluster/msk-cluster/acdfa467-0419-4f71-8681-ab69d0012438-s2")
+                                                "arn:aws:kafka:ap-southeast-2:590183826197:cluster/transfer-msk-cluster/3724f2a8-c5bd-48a7-b5e5-ee31d0dfb337-s2")
                                         )
                                         .actions(Arrays.asList(
                                                 "kafka-cluster:Connect",
@@ -99,7 +99,7 @@ public class ServiceApp {
                                         .sid("AllowTopicAccess")
                                         .effect(Effect.ALLOW)
                                         .resources(List.of(
-                                                "arn:aws:kafka:ap-southeast-2:590183826197:cluster/msk-cluster/acdfa467-0419-4f71-8681-ab69d0012438-s2/*")
+                                                "arn:aws:kafka:ap-southeast-2:590183826197:cluster/transfer-msk-cluster/3724f2a8-c5bd-48a7-b5e5-ee31d0dfb337-s2/*")
                                         )
                                         .actions(Arrays.asList(
                                                 "kafka-cluster:*Topic*",

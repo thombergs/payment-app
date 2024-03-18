@@ -1,3 +1,5 @@
+server:
+  port: 8081
 app:
   kafka-server: localhost:9093
   event-delay: PT5s

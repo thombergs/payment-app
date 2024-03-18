@@ -1,4 +1,4 @@
-package io.reflectoring.paymentservice;
+package io.reflectoring;
 
 import dev.stratospheric.cdk.Network;
 import dev.stratospheric.cdk.Network.NetworkInputParameters;

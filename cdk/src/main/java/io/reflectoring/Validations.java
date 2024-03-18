@@ -1,4 +1,4 @@
-package io.reflectoring.paymentservice;
+package io.reflectoring;
 
 public class Validations {
 
