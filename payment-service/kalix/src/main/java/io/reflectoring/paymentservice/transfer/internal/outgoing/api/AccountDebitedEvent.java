@@ -9,7 +9,7 @@ public record AccountDebitedEvent(
         AccountId sourceAccountId,
         Money amount,
         DebitResult result
-) {
+) implements OutgoingEvent {
 
     public enum DebitResult {
         SUCCESS,

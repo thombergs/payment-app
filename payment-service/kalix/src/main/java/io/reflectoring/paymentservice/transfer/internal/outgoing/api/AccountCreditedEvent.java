@@ -9,7 +9,7 @@ public record AccountCreditedEvent(
         AccountId targetAccountId,
         Money amount,
         CreditResult result
-) {
+) implements OutgoingEvent {
 
     public enum CreditResult {
         SUCCESS,

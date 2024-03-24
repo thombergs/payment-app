@@ -1,4 +1,4 @@
-package io.reflectoring.paymentservice.kalix;
+package io.reflectoring.paymentservice.kalix.stream;
 
 import io.reflectoring.paymentservice.transfer.internal.incoming.api.RequestAccountCreditEvent;
 import io.reflectoring.paymentservice.transfer.internal.incoming.api.RequestAccountDebitEvent;
@@ -20,7 +20,6 @@ import java.util.concurrent.TimeUnit;
  * This class is removed by the build process when run with the profile "-P topic".
  */
 @Subscribe.Stream(id = "transfer-events", service = "transfer-service")
-@Publish.Stream(id = "payment-events")
 public class IncomingEventsFromStreamAction extends Action {
 
     private static final Logger logger = LoggerFactory.getLogger(IncomingEventsFromStreamAction.class);

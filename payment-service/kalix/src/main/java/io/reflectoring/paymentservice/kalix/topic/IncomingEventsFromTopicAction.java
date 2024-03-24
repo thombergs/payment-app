@@ -1,5 +1,6 @@
-package io.reflectoring.paymentservice.kalix;
+package io.reflectoring.paymentservice.kalix.topic;
 
+import io.reflectoring.paymentservice.kalix.Topics;
 import io.reflectoring.paymentservice.transfer.internal.incoming.api.RequestAccountCreditEvent;
 import io.reflectoring.paymentservice.transfer.internal.incoming.api.RequestAccountDebitEvent;
 import io.reflectoring.paymentservice.transfer.internal.incoming.api.RequestFraudCheckEvent;

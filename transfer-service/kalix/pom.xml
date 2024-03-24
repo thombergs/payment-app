@@ -227,7 +227,7 @@
             <artifactId>maven-compiler-plugin</artifactId>
             <configuration>
               <excludes>
-                <exclude>io/reflectoring/paymentapp/kalix/topic/**</exclude>
+                <exclude>io/reflectoring/transferservice/kalix/topic/**</exclude>
               </excludes>
             </configuration>
           </plugin>
@@ -245,7 +245,7 @@
             <artifactId>maven-compiler-plugin</artifactId>
             <configuration>
               <excludes>
-                <exclude>io/reflectoring/paymentapp/kalix/stream/**</exclude>
+                <exclude>io/reflectoring/transferservice/kalix/stream/**</exclude>
               </excludes>
             </configuration>
           </plugin>
