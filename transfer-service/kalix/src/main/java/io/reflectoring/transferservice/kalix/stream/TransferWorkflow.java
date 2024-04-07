@@ -53,10 +53,6 @@ public class TransferWorkflow extends Workflow<TransferState> {
             @RequestBody StartTransferRequest request
     ) {
         if (currentState() != null) {
-            // TODO: This check only works because the client has to provide the
-            // transfer id even when starting the transfer. Does this mean
-            // that the client MUST control the transfer ID?
-            // Is there a way for the server to control the transfer ID?
             return effects().error("Transfer already started!");
         }
 
@@ -140,15 +136,15 @@ public class TransferWorkflow extends Workflow<TransferState> {
         Step fraudCheck = step("fraudCheck")
                 .call(TransferState.class, transferState -> {
                     logger.info("executing step 'fraudCheck'");
-                    return componentClient.forAction()
-                            .call(OutgoingEventsToStreamAction::requestFraudCheck)
+                    return componentClient.forEventSourcedEntity(transferState.id().toString())
+                            .call(TransferEventEntity::requestFraudCheck)
                             .params(new RequestFraudCheckEvent(
                                     transferState.id(),
                                     transferState.sourceAccountId(),
                                     transferState.transactionLocation()
                             ));
                 })
-                .andThen(RequestFraudCheckEvent.class, __ ->
+                .andThen(String.class, __ ->
                         effects()
                                 .updateState(SimpleTransferState
                                         .fromTransferState(currentState())
@@ -157,14 +153,14 @@ public class TransferWorkflow extends Workflow<TransferState> {
 
         Step debitAccount = step("debitSourceAccount")
                 .call(TransferState.class, transferState ->
-                        componentClient.forAction()
-                                .call(OutgoingEventsToStreamAction::requestAccountDebit)
+                        componentClient.forEventSourcedEntity(transferState.id().toString())
+                                .call(TransferEventEntity::requestAccountDebit)
                                 .params(new RequestAccountDebitEvent(
                                         transferState.id(),
                                         transferState.sourceAccountId(),
                                         transferState.amount()
                                 )))
-                .andThen(RequestAccountDebitEvent.class, __ ->
+                .andThen(String.class, __ ->
                         effects()
                                 .updateState(SimpleTransferState
                                         .fromTransferState(currentState())
@@ -173,14 +169,14 @@ public class TransferWorkflow extends Workflow<TransferState> {
 
         Step creditAccount = step("creditTargetAccount")
                 .call(TransferState.class, transferState ->
-                        componentClient.forAction()
-                                .call(OutgoingEventsToStreamAction::requestAccountCredit)
+                        componentClient.forEventSourcedEntity(transferState.id().toString())
+                                .call(TransferEventEntity::requestAccountCredit)
                                 .params(new RequestAccountCreditEvent(
                                         transferState.id(),
                                         transferState.targetAccountId(),
                                         transferState.amount()
                                 )))
-                .andThen(RequestAccountCreditEvent.class, __ ->
+                .andThen(String.class, __ ->
                         effects()
                                 .updateState(SimpleTransferState
                                         .fromTransferState(currentState())

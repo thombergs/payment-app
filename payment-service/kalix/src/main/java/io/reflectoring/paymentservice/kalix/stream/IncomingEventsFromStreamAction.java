@@ -7,8 +7,8 @@ import io.reflectoring.paymentservice.transfer.internal.outgoing.api.AccountCred
 import io.reflectoring.paymentservice.transfer.internal.outgoing.api.AccountDebitedEvent;
 import io.reflectoring.paymentservice.transfer.internal.outgoing.api.FraudCheckedEvent;
 import kalix.javasdk.action.Action;
-import kalix.javasdk.annotations.Publish;
 import kalix.javasdk.annotations.Subscribe;
+import kalix.javasdk.client.ComponentClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -24,40 +24,68 @@ public class IncomingEventsFromStreamAction extends Action {
 
     private static final Logger logger = LoggerFactory.getLogger(IncomingEventsFromStreamAction.class);
     private final Duration eventDelay;
+    private final ComponentClient componentClient;
 
-    public IncomingEventsFromStreamAction(@Value("${app.event-delay}") Duration eventDelay) {
+    public IncomingEventsFromStreamAction(@Value("${app.event-delay}") Duration eventDelay, ComponentClient componentClient) {
         this.eventDelay = eventDelay;
+        this.componentClient = componentClient;
     }
 
-    public Effect<FraudCheckedEvent> onRequestFraudCheckEvent(RequestFraudCheckEvent event) {
-        logger.info("received event {} via topic", event);
+    public void onRequestFraudCheckEvent(RequestFraudCheckEvent incomingEvent) {
+        logger.info("received event {} via topic", incomingEvent);
+
+        // simulating time-consuming processing of the event ...
         delay();
-        return effects().reply(new FraudCheckedEvent(
-                event.transferId(),
-                FraudCheckedEvent.FraudCheckResult.SUCCESS
-        ));
+
+        FraudCheckedEvent outgoingEvent = new FraudCheckedEvent(
+                incomingEvent.transferId(),
+                FraudCheckedEvent.FraudCheckResult.SUCCESS);
+
+        // put the outgoing event on the journal
+        componentClient.forEventSourcedEntity(incomingEvent.transferId().toString())
+                .call(PaymentEventEntity::fraudChecked)
+                .params(outgoingEvent)
+                .execute();
     }
 
-    public Effect<AccountDebitedEvent> onRequestFraudCheckEvent(RequestAccountDebitEvent event) {
-        logger.info("received event {} via topic", event);
+    public void onRequestAccountDebitEvent(RequestAccountDebitEvent incomingEvent) {
+        logger.info("received event {} via topic", incomingEvent);
+
+        // simulating time-consuming processing of the event ...
         delay();
-        return effects().reply(new AccountDebitedEvent(
-                event.transferId(),
-                event.sourceAccountId(),
-                event.amount(),
+
+        AccountDebitedEvent outgoingEvent = new AccountDebitedEvent(
+                incomingEvent.transferId(),
+                incomingEvent.sourceAccountId(),
+                incomingEvent.amount(),
                 AccountDebitedEvent.DebitResult.SUCCESS
-        ));
+        );
+
+        // put the outgoing event on the journal
+        componentClient.forEventSourcedEntity(incomingEvent.transferId().toString())
+                .call(PaymentEventEntity::accountDebited)
+                .params(outgoingEvent)
+                .execute();
     }
 
-    public Effect<AccountCreditedEvent> onRequestFraudCheckEvent(RequestAccountCreditEvent event) {
-        logger.info("received event {} via topic", event);
+    public void onRequestAccountCreditEvent(RequestAccountCreditEvent incomingEvent) {
+        logger.info("received event {} via topic", incomingEvent);
+
+        // simulating time-consuming processing of the event ...
         delay();
-        return effects().reply(new AccountCreditedEvent(
-                event.transferId(),
-                event.targetAccountId(),
-                event.amount(),
+
+        AccountCreditedEvent outgoingEvent = new AccountCreditedEvent(
+                incomingEvent.transferId(),
+                incomingEvent.targetAccountId(),
+                incomingEvent.amount(),
                 AccountCreditedEvent.CreditResult.SUCCESS
-        ));
+        );
+
+        // put the outgoing event on the journal
+        componentClient.forEventSourcedEntity(incomingEvent.transferId().toString())
+                .call(PaymentEventEntity::accountCredited)
+                .params(outgoingEvent)
+                .execute();
     }
 
     private void delay() {

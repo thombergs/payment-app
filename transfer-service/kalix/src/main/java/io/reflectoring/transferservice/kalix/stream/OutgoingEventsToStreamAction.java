@@ -11,6 +11,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestBody;
 
 /**
+ * This action subscribes to the event stream emitted by the TransferEventEntity and
+ * publishes it to the stream "transfer-events" so it can subscribed by other Kalix services.
+ *
  * This class is removed by the build process when run with the profile "-P topic".
  */
 @Subscribe.EventSourcedEntity(value = TransferEventEntity.class, ignoreUnknown = true)

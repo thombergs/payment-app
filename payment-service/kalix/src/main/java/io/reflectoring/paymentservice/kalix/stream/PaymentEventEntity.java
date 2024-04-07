@@ -5,29 +5,69 @@ import io.reflectoring.paymentservice.transfer.internal.outgoing.api.AccountCred
 import io.reflectoring.paymentservice.transfer.internal.outgoing.api.AccountDebitedEvent;
 import io.reflectoring.paymentservice.transfer.internal.outgoing.api.FraudCheckedEvent;
 import io.reflectoring.paymentservice.transfer.internal.outgoing.api.OutgoingEvent;
+import kalix.javasdk.EntityContext;
 import kalix.javasdk.annotations.EventHandler;
 import kalix.javasdk.annotations.Id;
 import kalix.javasdk.annotations.TypeId;
 import kalix.javasdk.eventsourcedentity.EventSourcedEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+/**
+ * This entity is using the concept of an event-sourced entity to create a stream of events.
+ * It doesn't have any state.
+ */
 @Id("id")
 @TypeId("payment-event")
 @RequestMapping("/payment-entity/{id}")
 public class PaymentEventEntity extends EventSourcedEntity<TransferId, OutgoingEvent> {
 
+    private final TransferId id;
+
+    public PaymentEventEntity(EntityContext context) {
+        this.id = new TransferId(context.entityId());
+    }
+
+    @PostMapping("/account-debited")
+    public Effect<String> accountDebited(@RequestBody AccountDebitedEvent event) {
+        // persist a AccountDebitedEvent to the journal
+        return effects()
+                .emitEvent(event)
+                .thenReply(newState -> "OK");
+    }
+
+    @PostMapping("/account-credited")
+    public Effect<String> accountCredited(@RequestBody AccountCreditedEvent event) {
+        // persist a AccountCreditedEvent to the journal
+        return effects()
+                .emitEvent(event)
+                .thenReply(newState -> "OK");
+    }
+
+    @PostMapping("/fraud-checked")
+    public Effect<String> fraudChecked(@RequestBody FraudCheckedEvent event) {
+        // persist a FraudCheckedEvent to the journal
+        return effects()
+                .emitEvent(event)
+                .thenReply(newState -> "OK");
+    }
+
     @EventHandler
-    public TransferId accountCredited(AccountCreditedEvent event) {
+    public TransferId onAccountCredited(AccountCreditedEvent event) {
+        // we ignore the event here, because we just use this entity to create a stream of events
         return currentState();
     }
 
     @EventHandler
-    public TransferId fraudChecked(FraudCheckedEvent event) {
+    public TransferId onFraudChecked(FraudCheckedEvent event) {
+        // we ignore the event here, because we just use this entity to create a stream of events
         return currentState();
     }
 
     @EventHandler
-    public TransferId accountDebited(AccountDebitedEvent event) {
+    public TransferId onAccountDebited(AccountDebitedEvent event) {
+        // we ignore the event here, because we just use this entity to create a stream of events
         return currentState();
     }
 
