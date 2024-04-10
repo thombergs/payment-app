@@ -99,17 +99,29 @@ public class ServiceApp {
                                         .sid("AllowTopicAccess")
                                         .effect(Effect.ALLOW)
                                         .resources(List.of(
-                                                "arn:aws:kafka:ap-southeast-2:590183826197:cluster/transfer-msk-cluster/3724f2a8-c5bd-48a7-b5e5-ee31d0dfb337-s2/*")
+                                                "arn:aws:kafka:ap-southeast-2:590183826197:topic/transfer-msk-cluster/3724f2a8-c5bd-48a7-b5e5-ee31d0dfb337-s2/*")
                                         )
                                         .actions(Arrays.asList(
                                                 "kafka-cluster:*Topic*",
                                                 "kafka-cluster:WriteData",
                                                 "kafka-cluster:ReadData"))
-                                        .build()))
+                                        .build(),
+                                PolicyStatement.Builder.create()
+                                        .sid("AllowGroupAccess")
+                                        .effect(Effect.ALLOW)
+                                        .resources(List.of(
+                                                "arn:aws:kafka:ap-southeast-2:590183826197:group/transfer-msk-cluster/3724f2a8-c5bd-48a7-b5e5-ee31d0dfb337-s2/*")
+                                        )
+                                        .actions(Arrays.asList(
+                                                "kafka-cluster:AlterGroup",
+                                                "kafka-cluster:DescribeGroup"))
+                                        .build()
+                                ))
                         .withStickySessionsEnabled(true)
                         .withHealthCheckPath("/actuator/health")
                         .withAwsLogsDateTimeFormat("%Y-%m-%dT%H:%M:%S.%f%z")
                         .withHttpListenerPriority(httpListenerPriority)
+                        .withMemory(1024)
                         .withHealthCheckIntervalSeconds(30), // needs to be long enough to allow for slow start up with low-end computing instances
 
                 Network.getOutputParametersFromParameterStore(serviceStack, applicationEnvironment.getEnvironmentName()));

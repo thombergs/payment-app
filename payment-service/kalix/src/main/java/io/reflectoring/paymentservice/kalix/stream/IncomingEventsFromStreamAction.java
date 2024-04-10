@@ -31,7 +31,7 @@ public class IncomingEventsFromStreamAction extends Action {
         this.componentClient = componentClient;
     }
 
-    public void onRequestFraudCheckEvent(RequestFraudCheckEvent incomingEvent) {
+    public Effect<String> onRequestFraudCheckEvent(RequestFraudCheckEvent incomingEvent) {
         logger.info("received event {} via topic", incomingEvent);
 
         // simulating time-consuming processing of the event ...
@@ -42,13 +42,13 @@ public class IncomingEventsFromStreamAction extends Action {
                 FraudCheckedEvent.FraudCheckResult.SUCCESS);
 
         // put the outgoing event on the journal
-        componentClient.forEventSourcedEntity(incomingEvent.transferId().toString())
+        var call = componentClient.forEventSourcedEntity(incomingEvent.transferId().toString())
                 .call(PaymentEventEntity::fraudChecked)
-                .params(outgoingEvent)
-                .execute();
+                .params(outgoingEvent);
+        return effects().forward(call);
     }
 
-    public void onRequestAccountDebitEvent(RequestAccountDebitEvent incomingEvent) {
+    public Effect<String> onRequestAccountDebitEvent(RequestAccountDebitEvent incomingEvent) {
         logger.info("received event {} via topic", incomingEvent);
 
         // simulating time-consuming processing of the event ...
@@ -62,13 +62,13 @@ public class IncomingEventsFromStreamAction extends Action {
         );
 
         // put the outgoing event on the journal
-        componentClient.forEventSourcedEntity(incomingEvent.transferId().toString())
+        var call = componentClient.forEventSourcedEntity(incomingEvent.transferId().toString())
                 .call(PaymentEventEntity::accountDebited)
-                .params(outgoingEvent)
-                .execute();
+                .params(outgoingEvent);
+        return effects().forward(call);
     }
 
-    public void onRequestAccountCreditEvent(RequestAccountCreditEvent incomingEvent) {
+    public Effect<String> onRequestAccountCreditEvent(RequestAccountCreditEvent incomingEvent) {
         logger.info("received event {} via topic", incomingEvent);
 
         // simulating time-consuming processing of the event ...
@@ -82,10 +82,10 @@ public class IncomingEventsFromStreamAction extends Action {
         );
 
         // put the outgoing event on the journal
-        componentClient.forEventSourcedEntity(incomingEvent.transferId().toString())
+        var call = componentClient.forEventSourcedEntity(incomingEvent.transferId().toString())
                 .call(PaymentEventEntity::accountCredited)
-                .params(outgoingEvent)
-                .execute();
+                .params(outgoingEvent);
+        return effects().forward(call);
     }
 
     private void delay() {
