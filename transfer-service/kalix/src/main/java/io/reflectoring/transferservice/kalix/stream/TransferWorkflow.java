@@ -48,7 +48,7 @@ public class TransferWorkflow extends Workflow<TransferState> {
     }
 
     @PostMapping("/start")
-    public Effect<Message> startTransfer(
+    public Effect<String> startTransfer(
             @PathVariable("id") String id,
             @RequestBody StartTransferRequest request
     ) {
@@ -69,7 +69,7 @@ public class TransferWorkflow extends Workflow<TransferState> {
         return effects()
                 .updateState(initialState)
                 .transitionTo("fraudCheck", initialState)
-                .thenReply(new Message("Transfer started"));
+                .thenReply("Transfer started");
     }
 
     @GetMapping("/status")
@@ -82,9 +82,10 @@ public class TransferWorkflow extends Workflow<TransferState> {
     }
 
     @PostMapping("/on-fraud-checked")
-    public Effect<Message> onFraudChecked(@RequestBody FraudCheckedEvent event) {
+    public Effect<String> onFraudChecked(@RequestBody FraudCheckedEvent event) {
         logger.info("received event {}", event);
         if (currentState() == null) {
+            logger.warn("currentState() is null!");
             return effects().error("transfer not started");
         }
 
@@ -94,11 +95,11 @@ public class TransferWorkflow extends Workflow<TransferState> {
 
         return effects()
                 .transitionTo("debitSourceAccount", currentState())
-                .thenReply(new Message("transfer progressed "));
+                .thenReply("transfer progressed ");
     }
 
     @PostMapping("/on-source-account-debited")
-    public Effect<Message> onSourceAccountDebited(@RequestBody AccountDebitedEvent event) {
+    public Effect<String> onSourceAccountDebited(@RequestBody AccountDebitedEvent event) {
         if (currentState() == null) {
             return effects().error("transfer not started");
         }
@@ -109,11 +110,11 @@ public class TransferWorkflow extends Workflow<TransferState> {
 
         return effects()
                 .transitionTo("creditTargetAccount", currentState())
-                .thenReply(new Message("transfer progressed "));
+                .thenReply("transfer progressed ");
     }
 
     @PostMapping("/on-target-account-credited")
-    public Effect<Message> onTargetAccountCredited(@RequestBody AccountCreditedEvent event) {
+    public Effect<String> onTargetAccountCredited(@RequestBody AccountCreditedEvent event) {
         if (currentState() == null) {
             return effects().error("transfer not started");
         }
@@ -127,7 +128,7 @@ public class TransferWorkflow extends Workflow<TransferState> {
                         .fromTransferState(currentState())
                         .withStatus(WorkflowStatus.COMPLETE))
                 .end()
-                .thenReply(new Message("transfer finished"));
+                .thenReply("transfer finished");
     }
 
     @Override

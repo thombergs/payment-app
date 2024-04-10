@@ -5,11 +5,11 @@ import io.reflectoring.paymentservice.transfer.internal.outgoing.api.AccountCred
 import io.reflectoring.paymentservice.transfer.internal.outgoing.api.AccountDebitedEvent;
 import io.reflectoring.paymentservice.transfer.internal.outgoing.api.FraudCheckedEvent;
 import io.reflectoring.paymentservice.transfer.internal.outgoing.api.OutgoingEvent;
-import kalix.javasdk.EntityContext;
 import kalix.javasdk.annotations.EventHandler;
 import kalix.javasdk.annotations.Id;
 import kalix.javasdk.annotations.TypeId;
 import kalix.javasdk.eventsourcedentity.EventSourcedEntity;
+import kalix.javasdk.eventsourcedentity.EventSourcedEntityContext;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,8 +25,13 @@ public class PaymentEventEntity extends EventSourcedEntity<TransferId, OutgoingE
 
     private final TransferId id;
 
-    public PaymentEventEntity(EntityContext context) {
+    public PaymentEventEntity(EventSourcedEntityContext context) {
         this.id = new TransferId(context.entityId());
+    }
+
+    @Override
+    public TransferId emptyState() {
+        return this.id;
     }
 
     @PostMapping("/account-debited")

@@ -23,11 +23,11 @@ import java.util.concurrent.TimeUnit;
 public class IncomingEventsFromStreamAction extends Action {
 
     private static final Logger logger = LoggerFactory.getLogger(IncomingEventsFromStreamAction.class);
-    private final Duration eventDelay;
+    // can't inject from property app.event-delay because of NoSuchBeanDefinitionException
+    private final Duration eventDelay = Duration.ofSeconds(5);
     private final ComponentClient componentClient;
 
-    public IncomingEventsFromStreamAction(@Value("${app.event-delay}") Duration eventDelay, ComponentClient componentClient) {
-        this.eventDelay = eventDelay;
+    public IncomingEventsFromStreamAction(ComponentClient componentClient) {
         this.componentClient = componentClient;
     }
 

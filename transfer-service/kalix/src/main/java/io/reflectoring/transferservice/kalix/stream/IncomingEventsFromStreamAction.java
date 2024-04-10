@@ -1,6 +1,5 @@
 package io.reflectoring.transferservice.kalix.stream;
 
-import io.reflectoring.transferservice.kalix.Topics;
 import io.reflectoring.transferservice.transfer.internal.incoming.api.AccountCreditedEvent;
 import io.reflectoring.transferservice.transfer.internal.incoming.api.AccountDebitedEvent;
 import io.reflectoring.transferservice.transfer.internal.incoming.api.FraudCheckedEvent;
@@ -28,27 +27,27 @@ public class IncomingEventsFromStreamAction extends Action {
     }
 
     public Effect<String> onFraudCheckedEvent(FraudCheckedEvent event) throws IOException {
-        logger.info("received event via topic {}", Topics.FRAUD_CHECKED);
-        componentClient.forWorkflow("transfer")
+        logger.info("received event of type {} from stream {}", event.getClass().getSimpleName(), "payment-events");
+        var call = componentClient.forWorkflow(event.transferId().toString())
                 .call(TransferWorkflow::onFraudChecked)
                 .params(event);
-        return effects().reply("sent event");
+        return effects().forward(call);
     }
 
     public Effect<String> onAccountDebitedEvent(AccountDebitedEvent event) {
-        logger.info("received event {} via web call", event);
-        componentClient.forWorkflow("transfer")
+        logger.info("received event of type {} from stream {}", event.getClass().getSimpleName(), "payment-events");
+        var call = componentClient.forWorkflow(event.transferId().toString())
                 .call(TransferWorkflow::onSourceAccountDebited)
                 .params(event);
-        return effects().reply("sent event");
+        return effects().forward(call);
     }
 
     public Effect<String> onAccountCreditedEvent(AccountCreditedEvent event) {
-        logger.info("received event {} via web call", event);
-        componentClient.forWorkflow("transfer")
+        logger.info("received event of type {} from stream {}", event.getClass().getSimpleName(), "payment-events");
+        var call = componentClient.forWorkflow(event.transferId().toString())
                 .call(TransferWorkflow::onTargetAccountCredited)
                 .params(event);
-        return effects().reply("sent event");
+        return effects().forward(call);
     }
 
 }

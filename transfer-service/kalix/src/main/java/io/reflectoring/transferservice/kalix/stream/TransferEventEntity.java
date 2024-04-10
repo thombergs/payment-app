@@ -10,6 +10,7 @@ import kalix.javasdk.annotations.EventHandler;
 import kalix.javasdk.annotations.Id;
 import kalix.javasdk.annotations.TypeId;
 import kalix.javasdk.eventsourcedentity.EventSourcedEntity;
+import kalix.javasdk.eventsourcedentity.EventSourcedEntityContext;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,7 +27,7 @@ public class TransferEventEntity extends EventSourcedEntity<TransferId, Outgoing
 
     private final TransferId id;
 
-    public TransferEventEntity(EntityContext context) {
+    public TransferEventEntity(EventSourcedEntityContext context) {
         this.id = new TransferId(context.entityId());
     }
 
